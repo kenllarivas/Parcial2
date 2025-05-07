@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Codificación de caracteres UTF-8 para soportar caracteres especiales -->
     <meta charset="UTF-8">
-    <!-- Configuración de viewport para diseño responsivo -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título de la página que aparece en la pestaña del navegador -->
-    <title>Medipiel</title>
-    
-    <!-- Recursos externos -->
+    <title>Medipiel | Dermatología Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="parcial2.css">
-    
 </head>
+
 <body>
 <!-- Barra de promoción -->
 <div class="promo-bar">
     <p>¡Envío gratis en compras mayores a $50.000! 🚚</p>
 </div>
-<!--hola-->
+
 <!-- Navbar -->
 <header id="navbar">
     <nav>
@@ -295,7 +290,7 @@
             </div>
 
             <div class="producto" data-categorias="limpieza" data-marca="Bioderma" data-piel="sensible" data-beneficio="hidratacion" data-precio="167000"
-            data-descripcion="Agua micelar limpiadora Bioderma que cuida tu piel sensible. Para piel normal a sensible. Su fórmula con extracto de pepino es ideal para descongestionar.">
+            data-descripcion="Agua micelar limpiadora Bioderma que cuida tu piel sensible. Para piel normal a sensible. Su fórmula con extracto de pepino es ideal para descongestionar. No requiere enjuague.">
                 
                 <img src="img/aguamic1.png" alt="Agua Micelar">
                 <h3>Sensibio H2O Agua Micelar - Bioderma 500 ml</h3>
@@ -358,7 +353,48 @@
         </div>
     </div>
 </section>
-
+<!-- Ícono flotante de cotización -->
+<div class="cotizacion-float" id="iconoCotizacion">
+    📝 <span class="cotizacion-count">0</span>
+  </div>
+  
+  <!-- Modal de Cotización -->
+  <div class="modal" id="modalCotizacion">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarCotizacion()">&times;</span>
+      <h2>Resumen de Cotización</h2>
+  
+      <div id="resumenCotizacion"></div>
+  
+      <h3>Datos del Cliente</h3>
+      <form id="formCotizacion" class="form-cotizacion">
+        <div class="form-group">
+          <label>Nombre completo:</label>
+          <input type="text" required name="nombre">
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico:</label>
+          <input type="email" required name="correo">
+        </div>
+        <div class="form-group">
+          <label>Teléfono:</label>
+          <input type="tel" required name="telefono">
+        </div>
+        <div class="form-group full-width">
+          <label>Mensaje adicional:</label>
+          <textarea rows="3" name="mensaje"></textarea>
+        </div>
+        <div class="form-group full-width">
+          <strong>Total Cotización: </strong><span id="totalCotizacion">$0</span>
+        </div>
+        <div class="form-group full-width">
+          <button type="submit" class="btn-producto">Finalizar Cotización</button>
+        </div>
+      </form>
+    </div>
+</div>
+  
+  
 <!-- Sección Mayoristas -->
 <section class="mayoristas-section" id="mayoristas-section">
     <h2>Promociones al por Mayor</h2>
@@ -378,6 +414,8 @@
     </div>
 
     <!-- Filtros para mayoristas -->
+    <div class="contenedor-productos-y-filtros">
+    
     <div class="filtros-container">
         <button class="btn-toggle-filtros" id="toggle-filtros-mayoristas">
             <i class="fas fa-filter"></i> Filtros
@@ -465,7 +503,6 @@
         </div>
     </div>
 
-    <h3>Nuestras Promociones</h3>
     <div class="promociones-mayoristas">
     <!-- 1. Productos más vendidos -->
             <div class="promocion" data-marca="Medipiel" data-especial="mas_vendidos" data-tipo="facial" data-volumen="10,50,100" data-precio="17500">
@@ -493,7 +530,11 @@
                 </div>
                 
                 <p class="condiciones">Producto estrella - Rotación garantizada</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
+                  
             </div>
         
             <!-- 2. Kit para iniciar -->
@@ -520,7 +561,10 @@
                 </div>
                 
                 <p class="condiciones">Incluye: Limpiador, Tonico, Crema día/noche y Serum</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
             </div>
         
             <!-- 3. Oferta exclusiva -->
@@ -547,7 +591,10 @@
                 </div>
                 
                 <p class="condiciones">Edición limitada - Solo para mayoristas</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
             </div>
         
             <!-- 4. Producto más vendido -->
@@ -574,7 +621,10 @@
                 </div>
                 
                 <p class="condiciones">Producto más solicitado en 2023</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
             </div>
         
             <!-- 5. Kit para iniciar -->
@@ -601,7 +651,10 @@
                 </div>
                 
                 <p class="condiciones">Perfecto para nuevos centros de estética</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
             </div>
         
             <!-- 6. Oferta exclusiva -->
@@ -628,7 +681,10 @@
                 </div>
                 
                 <p class="condiciones">Fórmula profesional - Oferta por tiempo limitado</p>
-                <button class="btn-producto">Solicitar Cotización</button>
+                <div class="botones-promo">
+                    <button class="btn-producto btn-carrito">Añadir al carrito</button>
+                    <button class="btn-producto btn-cotizacion">Solicitar Cotización</button>
+                </div>
             </div>
     </div>
 </section>
@@ -947,7 +1003,6 @@
                                     <label for="si-factura" style="display: inline; margin-right: 15px;">Sí</label>
                                     <input type="radio" name="factura" id="no-factura" value="no" checked>
                                     <label for="no-factura" style="display: inline;">No</label>
-                                    
                                 </div>
                             </div>
                             <div id="campo-correo-factura" style="display: none;">
@@ -1109,9 +1164,7 @@
     const productos = document.querySelectorAll('.producto');
     const toggleFiltrosBtn = document.getElementById('toggle-filtros');
     const filtrosContenido = document.getElementById('filtros-contenido');
-    const precioMinInput = document.getElementById('precio-min-productos');
-    const precioMaxInput = document.getElementById('precio-max-productos');
-    
+
     // Filtrado por categoría (funcionalidad básica)
     categorias.forEach(categoria => {
         categoria.addEventListener('click', () => {
@@ -1160,8 +1213,6 @@
     document.querySelectorAll('.filtros-contenido input[data-filtro="marca"]').forEach(checkbox => {
         checkbox.addEventListener('change', aplicarFiltrosProductos);
     });
-
-    
 }
     
     // 4. Sistema de Carrito
@@ -1227,22 +1278,15 @@
         });
     
         // Evento para botón de finalizar compra
-        // Evento para botón de finalizar compra
         if (finalizarCompraBtn) {
             finalizarCompraBtn.addEventListener('click', function() {
-        // Validar que hay productos en el carrito
-        if (cartItems.length === 0) {
-            alert('Por favor agrega productos al carrito antes de continuar');
-            return;
+                closeModal(modalCarrito);
+                openModal(modalPago);
+                updatePaymentModal();
+                actualizarSeccionesPago();
+                updateProgressBar(0); // Iniciar en el primer paso
+            });
         }
-        
-        closeModal(modalCarrito);
-        openModal(modalPago);
-        updatePaymentModal();
-        actualizarSeccionesPago();
-        updateProgressBar(0);
-    });
-    }
     
         // Eventos para botones de cerrar modales
         closeButtons.forEach(button => {
@@ -1372,24 +1416,17 @@
             saveCart();
             updateCartModal();
             updatePaymentModal();
-
-            // Cerrar modal de pago si no hay productos
-    if (cartItems.length === 0) {
-        closeModal(document.getElementById('modal-pago'));
-        alert('No hay productos en el carrito. Por favor agrega productos para continuar.');
-    }
         }
     
         function updateCartModal() {
-        const itemsCarrito = document.getElementById('items-carrito');
-        const totalCarrito = document.getElementById('total-carrito');
-        const finalizarCompraBtn = document.getElementById('finalizar-compra');
-        
-        if (!itemsCarrito || !totalCarrito || !finalizarCompraBtn) return;
-        
-        itemsCarrito.innerHTML = '';
-        let total = 0;
-
+            const itemsCarrito = document.getElementById('items-carrito');
+            const totalCarrito = document.getElementById('total-carrito');
+            
+            if (!itemsCarrito || !totalCarrito) return;
+            
+            itemsCarrito.innerHTML = '';
+            let total = 0;
+    
             cartItems.forEach(item => {
                 const precioNumerico = parseInt(item.precio.replace(/\D/g, '')) || 0;
                 const subtotal = precioNumerico * item.cantidad;
@@ -1411,15 +1448,7 @@
             });
     
             totalCarrito.textContent = `Total: $${total.toLocaleString()}`;
-            // Actualizar estado del botón
-            finalizarCompraBtn.disabled = cartItems.length === 0;
-            if (cartItems.length === 0) {
-                finalizarCompraBtn.style.opacity = '0.5';
-                finalizarCompraBtn.style.cursor = 'not-allowed';
-            } else {
-                finalizarCompraBtn.style.opacity = '1';
-                finalizarCompraBtn.style.cursor = 'pointer';
-            }
+    
             // Eventos para botones de eliminar
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', function() {
@@ -1437,22 +1466,6 @@
             
             resumenCompra.innerHTML = '';
             let subtotal = 0;
-
-            // Mostrar mensaje si no hay productos
-            if (cartItems.length === 0) {
-                resumenCompra.innerHTML = `
-                    <div class="empty-cart-message">
-                        <p>No hay productos en tu carrito</p>
-                        <button class="btn-producto" onclick="closeModal(document.getElementById('modal-pago'))">
-                            Volver a la tienda
-                        </button>
-                    </div>
-                `;
-                subtotalCompra.textContent = '$0';
-                totalCompra.textContent = '$0';
-                document.getElementById('total-confirm').textContent = '$0';
-                return;
-            }
     
             cartItems.forEach(item => {
                 const precioNumerico = parseInt(item.precio.replace(/\D/g, '')) || 0;
@@ -1700,12 +1713,7 @@
     
         function procesarFormularioPago(e) {
             e.preventDefault();
-             // Validación reforzada
-    if (cartItems.length === 0) {
-        alert('No hay productos en el carrito. El proceso de compra se cancelará.');
-        closeModal(document.getElementById('modal-pago'));
-        return;
-    }
+            
             if (!document.getElementById('accept-terms').checked) {
                 alert('Debes aceptar los términos y condiciones para continuar');
                 return;
@@ -2325,7 +2333,152 @@
     }
 }
     
-    
     </script>
+    <script> // Función de los botones 10+, 30+, 50+ ...
+        document.querySelectorAll('.nivel-promo').forEach(boton => {
+          boton.addEventListener('click', () => {
+            const tarjeta = boton.closest('.promocion');
+            const select = tarjeta.querySelector('.selector-cantidad');
+            const precioMostrado = tarjeta.querySelector('.precio-mayorista');
+        
+            // Marcar el botón activo
+            tarjeta.querySelectorAll('.nivel-promo').forEach(btn => btn.classList.remove('active'));
+            boton.classList.add('active');
+        
+            // Obtener los datos del botón (rango mínimo/máximo)
+            const min = parseInt(boton.dataset.min);
+            const max = parseInt(boton.dataset.max || 999999);
+        
+            // Buscar opción correspondiente en el select
+            let opcionCorrecta = null;
+            for (let i = 0; i < select.options.length; i++) {
+              const opcion = select.options[i];
+              const texto = opcion.value;
+              const precio = opcion.dataset.precio;
+        
+              // Extraer números del texto como "10-29", "100+", etc.
+              let [desde, hasta] = texto.split('-');
+              desde = parseInt(desde);
+              hasta = texto.includes('+') ? 999999 : parseInt(hasta);
+        
+              if (desde === min && hasta === max) {
+                opcionCorrecta = opcion;
+                break;
+              }
+            }
+        
+            // Si se encuentra la opción correcta, actualizar el precio
+            if (opcionCorrecta) {
+              select.value = opcionCorrecta.value;
+              const nuevoPrecio = opcionCorrecta.dataset.precio;
+              precioMostrado.textContent = `$${Number(nuevoPrecio).toLocaleString("es-CO")}`;
+            }
+          });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.mayoristas-section .btn-carrito').forEach(button => {
+          button.addEventListener('click', function () {
+            const tarjeta = button.closest('.promocion');
+            const nombre = tarjeta.querySelector('h3')?.textContent?.trim() || "Producto mayorista";
+            const imgSrc = tarjeta.querySelector('img')?.src || "img/noimage.png";
+            const selector = tarjeta.querySelector('.selector-cantidad');
+            const precio = selector?.selectedOptions[0]?.dataset?.precio || "0";
+            const cantidadTexto = selector?.value || "10-29";
+            const cantidad = parseInt(cantidadTexto.split('-')[0]) || 10;
+      
+            addToCart(nombre, `$${Number(precio).toLocaleString("es-CO")}`, imgSrc, cantidad);
+      
+            // Animación opcional del botón
+            button.innerHTML = '<i class="fas fa-check"></i> Agregado';
+            setTimeout(() => {
+              button.innerHTML = 'Añadir al carrito';
+            }, 1500);
+          });
+        });
+    </script>
+    // Sección de cotización
+    
+    <script>// Sección de cotización
+        const cotizacion = JSON.parse(localStorage.getItem('cotizacion') || '[]');
+      
+        document.querySelectorAll('.mayoristas-section .btn-cotizacion').forEach(button => {
+          button.addEventListener('click', function () {
+            const tarjeta = button.closest('.promocion');
+            const nombre = tarjeta.querySelector('h3')?.textContent?.trim();
+            const selector = tarjeta.querySelector('.selector-cantidad');
+            const precio = parseFloat(selector.selectedOptions[0].dataset.precio);
+            const cantidad = parseInt(selector.value.split('-')[0]) || 10;
+            const imagen = tarjeta.querySelector('img')?.src || "";
+      
+            const item = { nombre, precio, cantidad, imagen };
+            cotizacion.push(item);
+            localStorage.setItem('cotizacion', JSON.stringify(cotizacion));
+            actualizarCotizacionContador();
+      
+            button.innerHTML = '<i class="fas fa-check"></i> Añadido';
+            setTimeout(() => { button.innerHTML = 'Solicitar Cotización'; }, 1500);
+          });
+        });
+      
+        function actualizarCotizacionContador() {
+          const contador = document.querySelector('.cotizacion-count');
+          contador.textContent = cotizacion.length;
+          const icono = document.getElementById('iconoCotizacion');
+          icono.classList.add('bounce');
+          setTimeout(() => icono.classList.remove('bounce'), 500);
+        }
+      
+        document.getElementById('iconoCotizacion').addEventListener('click', () => {
+          const resumen = document.getElementById('resumenCotizacion');
+          resumen.innerHTML = cotizacion.map((item, index) => `
+            <p>
+              <img src="${item.imagen}" alt=""> 
+              ${item.nombre} x${item.cantidad} 
+              <strong>$${(item.precio * item.cantidad).toLocaleString('es-CO')}</strong>
+              <button onclick="eliminarCotizacion(${index})" title="Eliminar">&times;</button>
+            </p>
+          `).join('');
+          calcularTotalCotizacion();
+          document.getElementById('modalCotizacion').style.display = 'flex';
+        });
+      
+        function eliminarCotizacion(index) {
+          cotizacion.splice(index, 1);
+          localStorage.setItem('cotizacion', JSON.stringify(cotizacion));
+          document.getElementById('iconoCotizacion').click();
+          actualizarCotizacionContador();
+        }
+      
+        function calcularTotalCotizacion() {
+          const total = cotizacion.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+          document.getElementById('totalCotizacion').textContent = `$${total.toLocaleString('es-CO')}`;
+        }
+      
+        function cerrarCotizacion() {
+          document.getElementById('modalCotizacion').style.display = 'none';
+        }
+      
+        document.getElementById('formCotizacion').addEventListener('submit', e => {
+          e.preventDefault();
+          if (cotizacion.length === 0) {
+            alert("⚠️ Debes agregar al menos un producto a la cotización antes de enviarla.");
+            return;
+          }
+          alert("📩 Tu cotización fue registrada. Te enviaremos los detalles al correo electrónico.");
+          cerrarCotizacion();
+          cotizacion.length = 0;
+          localStorage.removeItem('cotizacion');
+          actualizarCotizacionContador();
+          document.getElementById('formCotizacion').reset();
+        });
+      
+        // Inicializar contador al cargar
+        actualizarCotizacionContador();
+    </script>
+      
+   
+ 
+        
 </body>
 </html>
