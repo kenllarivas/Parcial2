@@ -1,0 +1,4230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medipiel | Dermatología Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="parcial2.css">
+</head>
+<style>
+/* --- PALETA DE COLORES --- */
+:root {
+    --blanco: #FFFFFF;
+    --azul-bebe: #8dc8cb;
+    --dorado: #c27164;
+    --texto: #333333;
+    --promo-bg: #027079;
+    --mayorista-bg: #f8f9fa;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--texto);
+    background-color: var(--blanco);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- BARRA DE PROMOCIÓN --- */
+.promo-bar {
+    background-color: var(--promo-bg);
+    color: var(--blanco);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+header {
+    background-color: var(--blanco);
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 28px;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover img {
+    transform: scale(1.1);
+}
+
+.nav-left ul, 
+.nav-right ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+nav a {
+    color: var(--texto);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--azul-bebe);
+    background-color: rgba(93, 156, 236, 0.1);
+}
+
+.btn-mayoristas {
+    background-color: var(--dorado);
+    color: var(--blanco);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+
+.btn-mayoristas:hover {
+    background-color: transparent;
+    color: var(--dorado);
+    border-color: var(--dorado);
+    transform: translateY(-2px);
+}
+
+/* --- CARRUSEL --- */
+.carrusel {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.carrusel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- CATEGORÍAS --- */
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 10%;
+    background-color: rgba(167, 199, 231, 0.1);
+}
+
+.categoria {
+    flex: 1;
+    max-width: 250px;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 15px;
+    background-color: var(--blanco);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.categoria:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(167, 199, 231, 0.3);
+    border-color: var(--azul-bebe);
+}
+
+.categoria.active {
+    background-color: var(--azul-bebe);
+    color: var(--blanco);
+}
+
+/* --- PRODUCTOS --- */
+.productos {
+    padding: 5rem 10%;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.productos h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--azul-bebe);
+    position: relative;
+    display: inline-block;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.producto {
+    background: var(--blanco);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--azul-bebe);
+}
+
+.producto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(167, 199, 231, 0.3);
+}
+
+.producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    transition: transform 0.5s;
+}
+
+.producto:hover img {
+    transform: scale(1.1);
+}
+
+.producto .descripcion {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    height: 40px;
+    overflow: hidden;
+}
+
+/* --- CANTIDAD Y BOTONES --- */
+.cantidad-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.cantidad-btn {
+    background-color: var(--azul-bebe);
+    color: var(--blanco);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cantidad-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn-producto {
+    background-color: var(--azul-bebe);
+    color: var(--blanco);
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.btn-producto:hover {
+    background-color: var(--dorado);
+    transform: translateY(-3px);
+}
+
+/* --- TESTIMONIOS --- */
+.testimonios {
+    background-color: var(--azul-bebe);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.testimonios h2 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.testimonios-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonio-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonio-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.testimonio-card h4 {
+    color: #3498db;
+    margin: 0 0 10px 0;
+}
+
+.comentario {
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* --- FOOTER --- */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-columns-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-mapa-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.4rem;
+    transition: all 0.3s;
+}
+
+/* --- CHATBOT --- */
+.modal-chatbot {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 380px;
+    max-height: 60vh;
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.chatbot-header {
+    background-color: var(--azul-bebe);
+    color: var(--blanco);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(135deg, var(--azul-bebe), #6ab7bb);
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chatbot-header h3::before {
+    content: "💬";
+    font-size: 1.2em;
+}
+
+.close-chatbot {
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 5px;
+}
+
+.close-chatbot:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-bebe) #f1f1f1;
+}
+
+.chatbot-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.chatbot-body::-webkit-scrollbar-thumb {
+    background-color: var(--azul-bebe);
+    border-radius: 3px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--blanco);
+    border-radius: 18px 18px 18px 4px;
+    padding: 12px 16px;
+    max-width: 80%;
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    line-height: 1.5;
+    font-size: 0.95rem;
+    color: var(--texto);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--azul-bebe);
+}
+
+.chatbot-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 8px 0 4px 0;
+}
+
+.chatbot-option {
+    background-color: var(--blanco);
+    border: 1px solid var(--azul-bebe);
+    color: var(--azul-bebe);
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin: 0;
+}
+
+.chatbot-option:hover {
+    background-color: var(--azul-bebe);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.producto-recomendado {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.producto-recomendado:hover {
+    transform: translateY(-3px);
+}
+
+/* Botón flotante */
+.chatbot-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--azul-bebe);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: all 0.3s;
+}
+
+.chatbot-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* --- MODALES --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- MODAL DE PRODUCTO --- */
+.modal-producto {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-producto-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.producto-imagen {
+    padding: 40px;
+    background: linear-gradient(135deg, #f8f8f8 0%, #e6f0ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-elegante {
+    max-height: 350px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    transition: transform 0.3s;
+}
+
+.imagen-elegante:hover {
+    transform: scale(1.05);
+}
+
+.producto-info {
+    padding: 40px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: #666;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--azul-bebe);
+}
+
+.producto-titulo {
+    font-size: 1.8rem;
+    color: var(--texto);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.producto-marca {
+    display: block;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.producto-precio-container {
+    margin: 25px 0;
+}
+
+.precio {
+    font-size: 2.2rem;
+    color: var(--dorado);
+    font-weight: bold;
+    display: block;
+}
+
+.precio-ml {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.tamanos-container {
+    margin: 30px 0;
+}
+
+.tamanos-container label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.tamanos-options {
+    display: flex;
+    gap: 10px;
+}
+
+.tamano-option {
+    padding: 10px 20px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.tamano-option.active {
+    border-color: var(--azul-bebe);
+    background: var(--azul-bebe);
+    color: white;
+}
+
+.btn-agregar-elegante {
+    width: 100%;
+    padding: 15px;
+    background: var(--azul-bebe);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn-agregar-elegante:hover {
+    background: var(--dorado);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(167, 199, 231, 0.4);
+}
+
+/* Ocultar descripciones en vista principal */
+.grid-productos .descripcion-text {
+    display: none !important;
+}
+
+/* Estilos para descripción en modal */
+.modal-producto #producto-descripcion-detalle {
+    display: block !important;
+    color: #666;
+    font-size: 0.9rem;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+/* --- FILTROS --- */
+.contenedor-productos-y-filtros {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+.filtros-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.btn-toggle-filtros {
+    margin-left: 0 !important;
+    align-self: flex-start;
+    padding-left: 5px;
+    background-color: var(--azul-bebe);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-toggle-filtros:hover {
+    transform: translateY(-2px);
+}
+
+.btn-toggle-filtros i {
+    transition: transform 0.3s;
+}
+
+.btn-toggle-filtros.activo i {
+    transform: rotate(180deg);
+}
+
+.filtros-contenido {
+    display: none;
+    background-color: var(--blanco);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.filtros-contenido.activo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.filtro-grupo {
+    margin-bottom: 15px;
+}
+
+.filtro-grupo h4 {
+    margin-bottom: 10px;
+    color: var(--azul-bebe);
+    font-size: 1rem;
+}
+
+.filtro-opcion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.filtro-opcion input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.filtro-opcion label {
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.precio-rango {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.precio-rango input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.contador-resultados {
+    font-size: 0.9rem;
+    color: var(--texto);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+
+/* --- SECCIÓN MAYORISTAS --- */
+.mayoristas-section {
+    display: none;
+    padding: 5rem 10%;
+    background-color: var(--mayorista-bg);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mayoristas-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--dorado);
+    position: relative;
+    display: inline-block;
+}
+
+.mayoristas-section h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: -10px;
+    left: 25%;
+    background-color: var(--azul-bebe);
+}
+
+.beneficios-mayoristas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.beneficio {
+    background: var(--blanco);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    border: 1px solid var(--dorado);
+}
+
+.beneficio:hover {
+    transform: translateY(-5px);
+}
+
+.beneficio i {
+    font-size: 2.5rem;
+    color: var(--dorado);
+    margin-bottom: 1rem;
+}
+
+.beneficio h3 {
+    color: var(--dorado);
+    margin-bottom: 1rem;
+}
+
+
+/* --- PROMOCIONES MAYORISTAS --- */
+.promociones-mayoristas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.promocion {
+    background: var(--blanco);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(167, 199, 231, 0.3);
+}
+
+.promocion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(167, 199, 231, 0.2);
+    border-color: var(--azul-bebe);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--dorado);
+    color: var(--blanco);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.promocion img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #f8f8f8;
+    padding: 15px;
+}
+
+.promocion h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--azul-bebe);
+    min-height: 50px;
+}
+
+.precio-normal {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.precio-mayorista {
+    font-weight: bold;
+    color: var(--dorado);
+    font-size: 1.3rem;
+    margin: 5px 0 15px 0;
+}
+
+.cantidad-promo-container {
+    background: rgba(167, 199, 231, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.selector-cantidad {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.niveles-promo {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.nivel-promo {
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nivel-promo.active {
+    background: var(--azul-bebe);
+    color: var(--blanco);
+}
+
+.condiciones {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 10px 0 15px 0;
+    flex-grow: 1;
+}
+
+/* --- ESTILOS DEL CARRITO --- */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.cart-item-info p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff5252;
+    font-size: 18px;
+    padding: 5px;
+    margin-left: 10px;
+    transition: transform 0.2s;
+}
+
+.remove-item:hover {
+    transform: scale(1.2);
+}
+
+/* --- ESTILOS DEL CHECKOUT --- */
+.modal-pago .modal-content {
+    max-width: 1200px;
+    width: 95%;
+    padding: 30px;
+    overflow-y: auto;
+    max-height: 90vh;
+    overflow-x: hidden; /* Asegura que no haya scroll horizontal */
+}
+
+.checkout-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.checkout-products {
+    flex: 1;
+    min-width: 300px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--sombra);
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+}
+
+.checkout-products h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--texto);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.resumen-item:last-child {
+    border-bottom: none;
+}
+
+.resumen-item-info {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.resumen-item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: var(--texto);
+}
+
+.resumen-item-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.resumen-item-price {
+    text-align: right;
+    font-weight: bold;
+    min-width: 100px;
+    color: var(--texto);
+}
+
+.resumen-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.resumen-item-quantity button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resumen-item-quantity input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    height: 28px;
+    border: 1px solid #ddd;
+}
+
+.checkout-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.summary-row.total {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    color: var(--texto);
+}
+
+.checkout-form {
+    flex: 2;
+    min-width: 300px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--sombra);
+}
+
+.form-section h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--texto);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-pago {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    width: 100%;
+    align-items: start;
+
+}
+
+.form-pago label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-pago input,
+.form-pago select,
+.form-pago textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-pago input:focus,
+.form-pago select:focus,
+.form-pago textarea:focus {
+    border-color: var(--azul-bebe);
+    outline: none;
+}
+
+.form-pago textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/*Bloqueo de carrito sin productos*/
+.empty-cart-message {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.empty-cart-message p {
+    font-size: 1.2rem;
+    color: var(--texto);
+    margin-bottom: 15px;
+}
+
+.empty-cart-message .btn-producto {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* --- SECCIÓN DE CONFIRMACIÓN MEJORADA --- */
+#section-confirm {
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 10px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+#resumen-info, #resumen-pago {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+#resumen-info h5, #resumen-pago h5 {
+    color: var(--azul-bebe);
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#resumen-info p, #resumen-pago p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Total destacado */
+#total-confirm {
+    font-size: 20px;
+    color: var(--dorado);
+    display: block;
+    margin: 15px 0;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Checkboxes modernos */
+.terms-container, .gift-option {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.terms-container label, .gift-option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+.terms-container input[type="checkbox"], 
+.gift-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--azul-bebe);
+    flex-shrink: 0;
+}
+
+/* Contenedor de botones */
+.form-section > .full-width:last-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Botón de confirmación */
+#btn-confirm-purchase {
+    padding: 10px 25px;
+    font-size: 14px;
+    border-radius: 6px;
+    background: var(--dorado);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+#btn-confirm-purchase:hover {
+    background: #b55a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(194, 113, 100, 0.2);
+}
+
+/* Botón Anterior */
+.btn-prev {
+    padding: 10px 25px;
+    font-size: 14px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: var(--texto);
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.btn-prev:hover {
+    background: #e2e8f0;
+}
+
+#btn-next-info {
+    margin-left: auto !important;  /* Empuja el botón a la derecha */
+    margin-right: 0 !important;
+    display: block !important;
+    width: auto !important;
+}
+
+/* --- BARRA DE PROGRESO MEJORADA --- */
+.checkout-progress {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    counter-reset: step;
+}
+
+.progress-step {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 180px;
+}
+
+.progress-step span {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #888;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.progress-step span::before {
+    counter-increment: step;
+    content: counter(step);
+}
+
+.progress-step.active span {
+    background: var(--azul-bebe);
+    color: white;
+    box-shadow: 0 4px 8px rgba(93, 156, 236, 0.3);
+}
+
+.progress-step.completed span {
+    background: var(--dorado);
+    color: white;
+}
+
+.progress-step.completed span::after {
+    content: "✓";
+    position: absolute;
+    font-size: 18px;
+}
+
+.progress-step p {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    padding-top: 8px;
+}
+
+.progress-step.active p,
+.progress-step.completed p {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.progress-step.active p::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: var(--azul-bebe);
+    border-radius: 3px;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: #f0f0f0;
+    z-index: 1;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--azul-bebe), var(--dorado));
+    transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Efecto de conexión entre pasos */
+.progress-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 60%;
+    right: -40%;
+    height: 6px;
+    background: transparent;
+    z-index: 1;
+}
+
+.progress-step.completed span::before {
+    content: ""; /* Elimina el número */
+}
+
+.progress-step.completed span::after {
+    content: "✓";
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .progress-step {
+        max-width: none;
+    }
+    
+    .progress-step p {
+        font-size: 12px;
+        white-space: normal;
+        line-height: 1.3;
+    }
+    
+    .progress-step span {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+    }
+    
+    .progress-bar,
+    .progress-step:not(:last-child)::after {
+        top: 16px;
+        height: 4px;
+    }
+}
+
+
+/* Botones */
+.btn-next, .btn-prev {
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-next {
+    background: var(--promo-bg);
+    color: white;
+}
+
+.btn-next:hover {
+    background: #015a62;
+}
+
+.btn-prev {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-prev:hover {
+    background: #e0e0e0;
+}
+
+/* --- MÉTODOS DE PAGO MEJORADOS --- */
+.metodo-pago {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.metodo-pago:hover {
+    border-color: var(--azul-bebe);
+    box-shadow: 0 4px 8px rgba(93, 156, 236, 0.1);
+    transform: translateY(-2px);
+}
+
+.metodo-pago input[type="radio"] {
+    margin-right: 12px;
+    accent-color: var(--azul-bebe);
+    width: 18px;
+    height: 18px;
+}
+
+.metodo-pago label {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--texto);
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.metodo-pago img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+/* Estilo para método seleccionado */
+.metodo-pago input[type="radio"]:checked + label {
+    font-weight: 600;
+    color: var(--azul-bebe);
+}
+
+/* Iconos específicos para cada método */
+.metodo-pago[data-method="tarjeta"] {
+    background-color: #f8fafd;
+    border-left: 4px solid var(--azul-bebe);
+}
+
+.metodo-pago[data-method="nequi"] {
+    background-color: #f0f9ff;
+    border-left: 4px solid #00b5d4;
+}
+
+.metodo-pago[data-method="efecty"] {
+    background-color: #f5f3ff;
+    border-left: 4px solid #7c3aed;
+}
+
+/* Estilo para la opción de muestra gratis */
+.free-sample-option {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.free-sample-option:hover {
+    border-color: var(--azul-bebe);
+    background-color: rgba(141, 200, 203, 0.1);
+}
+
+.free-sample-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--azul-bebe);
+    flex-shrink: 0;
+}
+
+/* Opción de regalo */
+.gift-option {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.gift-option label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.gift-option input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.gift-message {
+    margin-top: 15px;
+    display: none;
+}
+
+/* Términos y condiciones */
+.terms-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.terms-container label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.terms-container input {
+    width: auto;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-section {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.form-section.active {
+    display: block;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .footer-mapa-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        margin-top: 2rem;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        position: static;
+        transform: none;
+        order: 1;
+        margin-bottom: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-left, .nav-right {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .carrusel {
+        height: 300px;
+    }
+
+    .modal-chatbot {
+        width: 90%;
+        right: 5%;
+        bottom: 80px;
+    }
+
+    .categorias {
+        flex-wrap: wrap;
+        padding: 30px 5%;
+    }
+
+    .categoria {
+        min-width: 150px;
+        flex: 1 1 40%;
+    }
+
+    .promo-bar {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+
+    header {
+        top: 24px;
+    }
+
+    .beneficios-mayoristas,
+    .promociones-mayoristas {
+        grid-template-columns: 1fr;
+    }
+
+    .contenedor-productos-y-filtros {
+        flex-direction: column;
+    }
+
+    .filtros-container {
+        position: static;
+        width: 100%;
+    }
+
+    .modal-producto-content {
+        grid-template-columns: 1fr;
+    }
+
+    .producto-imagen, .producto-info {
+        padding: 30px;
+    }
+
+    .checkout-container {
+        flex-direction: column;
+    }
+    
+    .checkout-products, 
+    .checkout-form {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .form-pago {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkout-progress {
+        flex-wrap: wrap;
+    }
+    
+    .progress-step {
+        width: 33%;
+        margin-bottom: 15px;
+    }
+    
+    .progress-step p {
+        font-size: 12px;
+    }
+    
+    .modal-pago .modal-content {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-pago {
+        grid-template-columns: 1fr;
+    }
+    
+    .categoria {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-mapa-container {
+        height: 200px;
+    }
+
+    .promo-bar {
+        font-size: 0.7rem;
+        padding: 5px 0;
+    }
+
+    .cart-item img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .resumen-item {
+        flex-direction: column;
+    }
+    
+    .resumen-item-price {
+        text-align: left;
+        margin-top: 10px;
+    }
+    
+    .progress-step p {
+        white-space: normal;
+        font-size: 11px;
+    }
+}
+
+</style>
+<body>
+<!-- Barra de promoción -->
+<div class="promo-bar">
+    <p>¡Envío gratis en compras mayores a $50.000! 🚚</p>
+</div>
+
+<!-- Navbar -->
+<header id="navbar">
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#" class="btn-mayoristas" id="btn-mayoristas">Mayoristas</a></li>
+            </ul>
+        </div>
+        
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Medipiel">
+        </div>
+        
+        <div class="nav-right">
+            <ul>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <a href="#" class="carrito">
+                        🛒 <span class="carrito-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Carrusel -->
+<div class="carrusel">
+    <div class="carrusel-inner" id="carrusel-inner">
+        <div class="carrusel-item">
+            <img src="img/carru1.jpg" alt="promo">
+        </div>
+        <div class="carrusel-item">
+            <img src="img/carru2.jpg" alt="serum">
+        </div>
+        <div class="carrusel-item">
+            <img src="img/carru3.jpg" alt="pelo">
+        </div>
+    </div>
+    <button class="carrusel-control prev" onclick="moveSlide(-1)">❮</button>
+    <button class="carrusel-control next" onclick="moveSlide(1)">❯</button>
+    <div class="carrusel-dots" id="carrusel-dots"></div>
+</div>
+
+<!-- Secciones de categorías -->
+<div class="categorias">
+    <div class="categoria active" data-categoria="all">
+        <i class="fas fa-star"></i>
+        <h3>Todos</h3>
+        <p>Descubre nuestra gama completa de productos</p>
+    </div>
+    <div class="categoria" data-categoria="hidratacion">
+        <i class="fas fa-tint"></i>
+        <h3>Hidratación</h3>
+        <p>Productos para mantener tu piel hidratada</p>
+    </div>
+    <div class="categoria" data-categoria="limpieza">
+        <i class="fas fa-soap"></i>
+        <h3>Limpieza</h3>
+        <p>Limpiadores suaves para todo tipo de piel</p>
+    </div>
+    <div class="categoria" data-categoria="reparacion">
+        <i class="fas fa-heart"></i>
+        <h3>Reparación</h3>
+        <p>Tratamientos para pieles dañadas</p>
+    </div>
+    <div class="categoria" data-categoria="perfumeria">
+        <i class="fas fa-spray-can"></i>
+        <h3>Perfumería</h3>
+        <p>Fragancias exclusivas para tu piel</p>
+    </div>
+</div>
+
+<!-- Productos -->
+<section class="productos" id="productos">
+    <h2>Nuestros Productos Destacados</h2>
+
+    <div class="contenedor-productos-y-filtros">
+        <!-- Contenedor de filtros -->
+        <div class="filtros-container">
+            <button class="btn-toggle-filtros" id="toggle-filtros">
+                <i class="fas fa-filter"></i> Filtros
+            </button>
+            
+            <div class="filtros-contenido" id="filtros-contenido">
+                <!-- Filtro por marca -->
+                <div class="filtro-grupo">
+                    <h4>Marcas</h4>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="marca-la-roche" data-filtro="marca" value="La Roche" checked>
+                        <label for="marca-la-roche">La Roche-Posay</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="marca-cerave" data-filtro="marca" value="CeraVe" checked>
+                        <label for="marca-cerave">CeraVe</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="marca-bioderma" data-filtro="marca" value="Bioderma" checked>
+                        <label for="marca-bioderma">Bioderma</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="marca-skinceuticals" data-filtro="marca" value="Skinceuticals" checked>
+                        <label for="marca-skinceuticals">Skinceuticals</label>
+                    </div>
+                </div>
+                    <!-- Marcas de perfumes (nuevas) -->
+                <div class="filtro-opcion">
+                    <input type="checkbox" id="marca-lancome" data-filtro="marca" value="Lancome" checked>
+                    <label for="marca-lancome">Lancôme</label>
+                </div>
+                <div class="filtro-opcion">
+                    <input type="checkbox" id="marca-carolina-herrera" data-filtro="marca" value="Carolina Herrera" checked>
+                    <label for="marca-carolina-herrera">Carolina Herrera</label>
+                </div>
+
+                <!-- Filtro por precio -->
+                <div class="filtro-grupo">
+                    <h4>Precio</h4>
+                    <div class="precio-rango">
+                        <input type="number" id="precio-min-productos" placeholder="Mínimo" value="0">
+                        <span>-</span>
+                        <input type="number" id="precio-max-productos" placeholder="Máximo" value="500000">
+                    </div>
+                </div>
+                
+                <!-- Filtro por tipo de piel -->
+                <div class="filtro-grupo">
+                    <h4>Tipo de Piel</h4>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="piel-seca-productos" data-filtro="piel" value="seca" checked>
+                        <label for="piel-seca-productos">Seca</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="piel-grasa-productos" data-filtro="piel" value="grasa" checked>
+                        <label for="piel-grasa-productos">Grasa</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="piel-mixta-productos" data-filtro="piel" value="mixta" checked>
+                        <label for="piel-mixta-productos">Mixta</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="piel-sensible-productos" data-filtro="piel" value="sensible" checked>
+                        <label for="piel-sensible-productos">Sensible</label>
+                    </div>
+                </div>
+                
+                <!-- Filtro por beneficios -->
+                <div class="filtro-grupo">
+                    <h4>Beneficios</h4>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="beneficio-hidratacion-productos" data-filtro="beneficio" value="hidratacion" checked>
+                        <label for="beneficio-hidratacion-productos">Hidratación</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="beneficio-antiedad-productos" data-filtro="beneficio" value="antiedad" checked>
+                        <label for="beneficio-antiedad-productos">Antiedad</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="beneficio-acne-productos" data-filtro="beneficio" value="acne" checked>
+                        <label for="beneficio-acne-productos">Control de acné</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="beneficio-manchas-productos" data-filtro="beneficio" value="manchas" checked>
+                        <label for="beneficio-manchas-productos">Reducción de manchas</label>
+                    </div>
+                </div>
+                <div class="filtro-grupo">
+                    <h4>Familia Olfativa</h4>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="fragancia-dulce" data-filtro="fragancia" value="dulce" checked>
+                        <label for="fragancia-dulce">Dulce</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="fragancia-citrico" data-filtro="fragancia" value="citrico" checked>
+                        <label for="fragancia-citrico">Cítrico</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="fragancia-floral" data-filtro="fragancia" value="floral" checked>
+                        <label for="fragancia-floral">Floral</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="fragancia-amaderado" data-filtro="fragancia" value="amaderado" checked>
+                        <label for="fragancia-amaderado">Amaderado</label>
+                    </div>
+                    <div class="filtro-opcion">
+                        <input type="checkbox" id="fragancia-oriental" data-filtro="fragancia" value="oriental" checked>
+                        <label for="fragancia-oriental">Oriental</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenedor de productos -->
+        <div class="grid-productos">
+            <!-- Producto individual (repetir este patrón para cada producto) -->
+            <div class="producto" data-categorias="hidratacion" data-marca="La Roche" data-piel="grasa,mixta" data-beneficio="hidratacion,acne" data-precio="162000"
+            data-descripcion="Reduce los poros y el flujo de sebo, manteniendo a piel mate. Ideal para piel grasa con brillo persistente.">
+
+                <!-- Contenido visible -->
+                <img src="img/Hidra1.png" alt="Crema Hidratante">
+                <h3>Hidratante Facial Anti-brillo Effaclar Matificante</h3>
+                <div class="precio">$162.000</div>
+                <!-- Botones -->
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="hidratacion proteccion_solar" data-marca="ISDIN" data-piel="grasa,mixta,sensible" data-beneficio="hidratacion" data-precio="138000"
+            data-descripcion="Fotoprotector facial diario SPF 50, ultraligero, no graso, con ácido hialurónico, vitamina E y alga antioxidante. Hidrata y protege intensamente.">
+
+                <img src="img/procter1.png" alt="Protector Solar">
+                <h3>Fotoprotector Fusion Water Magic Oil Control</h3>
+                <div class="precio">$138.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+
+            <div class="producto" data-categorias="reparacion antiedad" data-marca="Skinceuticals" data-piel="seca,mixta" data-beneficio="antiedad" data-precio="531000"
+            data-descripcion="Rellena la piel, mejora la luminosidad y redefine el contorno facial">
+
+                <img src="img/serum1.png" alt="Serum ">
+                <h3>HA Intensifier Multi-Glycan - Skinceuticals 30 ml</h3>
+                <div class="precio">$531.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="limpieza" data-marca="CeraVe" data-piel="seca,sensible" data-beneficio="hidratacion" data-precio="106000"
+            data-descripcion="Elimina el exceso de grasa, suciedad y maquillaje contiene ceramidas, ácido hialurónico y niacinamida para ayudar a restaurar la barrera de la piel, atraer la hidratación de la piel.">
+
+                <img src="img/limpi1.png" alt="limpiador">
+                <h3>Gel Limpiador Espumoso - CeraVe 473 ml</h3>
+                <div class="precio">$106.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="reparacion" data-marca="La Roche" data-piel="grasa,mixta" data-beneficio="acne" data-precio="165000"
+            data-descripcion="Corrector triple anti-imperfecciones para pieles grasas y con tendencia a las imperfecciones">
+                
+                <img src="img/anti1.png" alt="Crema Reparadora">
+                <h3>Tratamiento Anti-imperfeccciones Effaclar Duo+M</h3>
+                <div class="precio">$165.000</div>
+                
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="limpieza" data-marca="Bioderma" data-piel="sensible" data-beneficio="hidratacion" data-precio="167000"
+            data-descripcion="Agua micelar limpiadora Bioderma que cuida tu piel sensible. Para piel normal a sensible. Su fórmula con extracto de pepino es ideal para descongestionar. No requiere enjuague.">
+                
+                <img src="img/aguamic1.png" alt="Agua Micelar">
+                <h3>Sensibio H2O Agua Micelar - Bioderma 500 ml</h3>
+                <div class="precio">$167.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="hidratacion" data-marca="Beauty Treats" data-piel="seca" data-beneficio="hidratacion" data-precio="58000"
+            data-descripcion="Hidratación intensa que tu piel para cuando se ve apagada, deshidratada y sin vitalidad. Mascarilla automoldeable, enriquecida con ácido hialurónico y colágeno.">
+                
+                <img src="img/mas1.png" alt="Mascarilla Hidratante">
+                <h3>Beauty Treats Mascarilla facial hidratante Hyaluronic</h3>
+                <div class="precio">$58.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="perfumeria" data-marca="Lancome" data-fragancia="dulce" data-piel="todas" data-beneficio="perfume" data-precio="921000"
+            data-descripcion="El olor de la felicidad, un ramo floral gourmet envuelto en una sonrisa de cristal. Un símbolo universal de felicidad y feminidad alegre. Mezclando los ingredientes más nobles.">
+                
+                <img src="img/perfu2.png" alt="Perfume Natural">
+                <h3>Perfume mujer La Vida es Belle - Lancôme 100 ml</h3>
+                <div class="precio">$921.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+
+            <div class="producto" data-categorias="perfumeria"  data-marca="Carolina Herrera" 
+            data-fragancia="citrico"  data-piel="todas" data-beneficio="perfume" data-precio="546000"
+            data-descripcion="Versión intensa y ambarada de 212 VIP Black, con notas de lavanda, regaliz y vainilla negra. Un elixir audaz que expresa confianza y singularidad.">
+                
+                <img src="img/perfu1.png" alt="Perfume Natural">
+                <h3>Perfume 212 VIP Black Elixir EDP Elixir- Carolina Herrera 100 ml</h3>
+                <div class="precio">$546.000</div>
+
+                <div class="cantidad-container">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" class="cantidad-input" value="1" min="1">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+                <button class="btn-producto">Añadir al carrito</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección Mayoristas -->
+<section class="mayoristas-section" id="mayoristas-section">
+    <h2>Promociones al por Mayor</h2>
+    
+    <div class="beneficios-mayoristas">
+        <div class="beneficio">
+            <i class="fas fa-percentage"></i>
+            <h3>Descuentos Exclusivos</h3>
+            <p>Obtén descuentos especiales desde el 20% al 40% según volumen de compra.</p>
+        </div>
+        
+        <div class="beneficio">
+            <i class="fas fa-truck"></i>
+            <h3>Envíos Gratis</h3>
+            <p>Envío gratuito en pedidos superiores a $500.000 en todo el país.</p>
+        </div>
+    </div>
+
+    <!-- Filtros para mayoristas -->
+    <div class="filtros-container">
+        <button class="btn-toggle-filtros" id="toggle-filtros-mayoristas">
+            <i class="fas fa-filter"></i> Filtros
+        </button>
+        
+        <div class="filtros-contenido" id="filtros-contenido-mayoristas">
+            <!-- Filtros básicos -->
+                        <div class="filtro-grupo">
+                            <h4>Marcas</h4>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="marca-medipiel" data-filtro="marca" value="Medipiel" checked>
+                                <label for="marca-medipiel">Medipiel</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="marca-dermacare" data-filtro="marca" value="Dermacare" checked>
+                                <label for="marca-dermacare">Dermacare</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="marca-skinpro" data-filtro="marca" value="SkinPro" checked>
+                                <label for="marca-skinpro">SkinPro</label>
+                            </div>
+                        </div>
+                        
+                        <div class="filtro-grupo">
+                            <h4>Precio por unidad</h4>
+                            <div class="precio-rango">
+                                <input type="number" id="precio-min-mayoristas" placeholder="Mínimo" value="0">
+                                <span>-</span>
+                                <input type="number" id="precio-max-mayoristas" placeholder="Máximo" value="100000">
+                            </div>
+                        </div>
+                        
+                        <!-- Nuevos filtros especiales -->
+                        <div class="filtro-grupo">
+                            <h4>Categorías Especiales</h4>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="mas-vendidos" data-filtro="especial" value="mas_vendidos">
+                                <label for="mas-vendidos">🔥 Más Vendidos</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="kits-inicio" data-filtro="especial" value="kit_inicio">
+                                <label for="kits-inicio">🚀 Kits para Empezar</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="ofertas-especiales" data-filtro="especial" value="oferta_especial">
+                                <label for="ofertas-especiales">💎 Ofertas Exclusivas</label>
+                            </div>
+                        </div>
+                        
+                        <div class="filtro-grupo">
+                            <h4>Tipo de Producto</h4>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="producto-facial" data-filtro="tipo" value="facial" checked>
+                                <label for="producto-facial">Facial</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="producto-corporal" data-filtro="tipo" value="corporal" checked>
+                                <label for="producto-corporal">Corporal</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="producto-capilar" data-filtro="tipo" value="capilar" checked>
+                                <label for="producto-capilar">Capilar</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="checkbox" id="producto-kit" data-filtro="tipo" value="kit" checked>
+                                <label for="producto-kit">Kits</label>
+                            </div>
+                        </div>
+                        
+                        <div class="filtro-grupo">
+                            <h4>Volumen Mínimo</h4>
+                            <div class="filtro-opcion">
+                                <input type="radio" name="volumen" id="volumen-bajo" data-filtro="volumen" value="10" checked>
+                                <label for="volumen-bajo">10+ unidades</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="radio" name="volumen" id="volumen-medio" data-filtro="volumen" value="50">
+                                <label for="volumen-medio">50+ unidades</label>
+                            </div>
+                            <div class="filtro-opcion">
+                                <input type="radio" name="volumen" id="volumen-alto" data-filtro="volumen" value="100">
+                                <label for="volumen-alto">100+ unidades</label>
+                            </div>
+                        </div>
+        </div>
+    </div>
+
+    <h3>Nuestras Promociones</h3>
+    <div class="promociones-mayoristas">
+    <!-- 1. Productos más vendidos -->
+            <div class="promocion" data-marca="Medipiel" data-especial="mas_vendidos" data-tipo="facial" data-volumen="10,50,100" data-precio="17500">
+                <div class="badge">-30% ★</div>
+                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Crema Hidratante">
+                <h3>Crema Hidratante Premium</h3>
+                <div class="precio-normal">$25.000</div>
+                <div class="precio-mayorista">$17.500</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-crema">Cantidad:</label>
+                    <select id="cantidad-crema" class="selector-cantidad" data-producto="Crema Hidratante">
+                        <option value="10-29" data-precio="20000">10-29 uds ($20.000)</option>
+                        <option value="30-49" data-precio="17500" selected>30-49 uds ($17.500)</option>
+                        <option value="50-99" data-precio="15000">50-99 uds ($15.000)</option>
+                        <option value="100+" data-precio="12500">100+ uds ($12.500)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="10" data-max="29">10+</div>
+                        <div class="nivel-promo active" data-min="30" data-max="49">30+</div>
+                        <div class="nivel-promo" data-min="50" data-max="99">50+</div>
+                        <div class="nivel-promo" data-min="100">100+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Producto estrella - Rotación garantizada</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+        
+            <!-- 2. Kit para iniciar -->
+            <div class="promocion" data-marca="Medipiel" data-especial="kit_inicio" data-tipo="kit" data-volumen="10" data-precio="120000">
+                <div class="badge">Kit Inicio ★</div>
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Kit Profesional">
+                <h3>Kit Inicial Estética Facial</h3>
+                <div class="precio-normal">$180.000</div>
+                <div class="precio-mayorista">$120.000</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-kit">Cantidad:</label>
+                    <select id="cantidad-kit" class="selector-cantidad" data-producto="Kit Inicial">
+                        <option value="5-9" data-precio="140000">5-9 kits ($140.000)</option>
+                        <option value="10-19" data-precio="120000" selected>10-19 kits ($120.000)</option>
+                        <option value="20+" data-precio="100000">20+ kits ($100.000)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="5" data-max="9">5+</div>
+                        <div class="nivel-promo active" data-min="10" data-max="19">10+</div>
+                        <div class="nivel-promo" data-min="20">20+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Incluye: Limpiador, Tonico, Crema día/noche y Serum</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+        
+            <!-- 3. Oferta exclusiva -->
+            <div class="promocion" data-marca="Dermacare" data-especial="oferta_especial" data-tipo="corporal" data-volumen="50,100" data-precio="9000">
+                <div class="badge">Exclusivo ★</div>
+                <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Jabón Dermatológico">
+                <h3>Jabón Corporal Detox</h3>
+                <div class="precio-normal">$15.000</div>
+                <div class="precio-mayorista">$9.000</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-jabon">Cantidad:</label>
+                    <select id="cantidad-jabon" class="selector-cantidad" data-producto="Jabón Corporal">
+                        <option value="50-99" data-precio="10000">50-99 uds ($10.000)</option>
+                        <option value="100-199" data-precio="9000" selected>100-199 uds ($9.000)</option>
+                        <option value="200+" data-precio="7500">200+ uds ($7.500)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="50" data-max="99">50+</div>
+                        <div class="nivel-promo active" data-min="100" data-max="199">100+</div>
+                        <div class="nivel-promo" data-min="200">200+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Edición limitada - Solo para mayoristas</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+        
+            <!-- 4. Producto más vendido -->
+            <div class="promocion" data-marca="SkinPro" data-especial="mas_vendidos" data-tipo="facial" data-volumen="10,50,100" data-precio="35000">
+                <div class="badge">Best Seller ★</div>
+                <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Serum Vitamina C">
+                <h3>Serum Iluminador Vitamina C</h3>
+                <div class="precio-normal">$50.000</div>
+                <div class="precio-mayorista">$35.000</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-serum">Cantidad:</label>
+                    <select id="cantidad-serum" class="selector-cantidad" data-producto="Serum Vitamina C">
+                        <option value="10-24" data-precio="40000">10-24 uds ($40.000)</option>
+                        <option value="25-49" data-precio="35000" selected>25-49 uds ($35.000)</option>
+                        <option value="50+" data-precio="30000">50+ uds ($30.000)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="10" data-max="24">10+</div>
+                        <div class="nivel-promo active" data-min="25" data-max="49">25+</div>
+                        <div class="nivel-promo" data-min="50">50+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Producto más solicitado en 2023</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+        
+            <!-- 5. Kit para iniciar -->
+            <div class="promocion" data-marca="Dermacare" data-especial="kit_inicio" data-tipo="kit" data-volumen="10" data-precio="85000">
+                <div class="badge">Kit Spa ★</div>
+                <img src="https://images.unsplash.com/photo-1591088398332-8a7791972803?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Kit Spa">
+                <h3>Kit Básico Spa Facial</h3>
+                <div class="precio-normal">$120.000</div>
+                <div class="precio-mayorista">$85.000</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-spa">Cantidad:</label>
+                    <select id="cantidad-spa" class="selector-cantidad" data-producto="Kit Spa">
+                        <option value="5-9" data-precio="95000">5-9 kits ($95.000)</option>
+                        <option value="10-19" data-precio="85000" selected>10-19 kits ($85.000)</option>
+                        <option value="20+" data-precio="75000">20+ kits ($75.000)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="5" data-max="9">5+</div>
+                        <div class="nivel-promo active" data-min="10" data-max="19">10+</div>
+                        <div class="nivel-promo" data-min="20">20+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Perfecto para nuevos centros de estética</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+        
+            <!-- 6. Oferta exclusiva -->
+            <div class="promocion" data-marca="Medipiel" data-especial="oferta_especial" data-tipo="capilar" data-volumen="50,100" data-precio="12000">
+                <div class="badge">Exclusivo ★</div>
+                <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" alt="Shampoo Reconstrucción">
+                <h3>Shampoo Reconstructor Capilar</h3>
+                <div class="precio-normal">$18.000</div>
+                <div class="precio-mayorista">$12.000</div>
+                
+                <div class="cantidad-promo-container">
+                    <label for="cantidad-shampoo">Cantidad:</label>
+                    <select id="cantidad-shampoo" class="selector-cantidad" data-producto="Shampoo Reconstructor">
+                        <option value="50-99" data-precio="13000">50-99 uds ($13.000)</option>
+                        <option value="100-199" data-precio="12000" selected>100-199 uds ($12.000)</option>
+                        <option value="200+" data-precio="10000">200+ uds ($10.000)</option>
+                    </select>
+                    
+                    <div class="niveles-promo">
+                        <div class="nivel-promo" data-min="50" data-max="99">50+</div>
+                        <div class="nivel-promo active" data-min="100" data-max="199">100+</div>
+                        <div class="nivel-promo" data-min="200">200+</div>
+                    </div>
+                </div>
+                
+                <p class="condiciones">Fórmula profesional - Oferta por tiempo limitado</p>
+                <button class="btn-producto">Solicitar Cotización</button>
+            </div>
+    </div>
+</section>
+
+<!-- Sección de Testimonios -->
+<section class="testimonios" id="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="testimonios-grid">
+        <div class="testimonio-card">
+            <img src="img/testimonio1.jpg" alt="María González">
+            <h4>María González</h4>
+            <!--<p class="antiguedad">Paciente desde 2020</p>-->
+            <p class="comentario">"La crema hidratante cambió mi piel completamente. Ahora luce radiante y sin irritaciones."</p>
+        </div>
+        <div class="testimonio-card">
+            <img src="img/testimonio2.jpg" alt="Carlos Martínez">
+            <h4>Carlos Martínez</h4>
+            <p class="comentario">"El protector solar es lo mejor que he usado. No deja sensación grasosa y protege todo el día."</p>
+        </div>
+        <div class="testimonio-card">
+            <img src="img/testimonio3.jpg" alt="Ana Rodríguez">
+            <h4>Ana Rodríguez</h4>
+            <p class="comentario">"El serum antiedad redujo mis arrugas en solo 4 semanas. ¡Increíbles resultados!"</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer con Mapa Integrado -->
+<footer id="contacto">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Contacto</h3>
+            <ul>
+                <li>📞 +57 123 456 7890</li>
+                <li>✉️ info@medipiel.com</li>
+                <li>📍 Calle 123 #45-67, Bogotá</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Horario</h3>
+            <ul>
+                <li>Lunes a Viernes: 8am - 6pm</li>
+                <li>Sábados: 9am - 2pm</li>
+                <li>Domingos: Cerrado</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Redes Sociales</h3>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/medipiel/?hl=es" target="_blank" class="icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@Medipiel_" target="_blank" class="icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@medipiel?lang=es" target="_blank" class="icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.facebook.com/Medipielsa/?locale=es_LA" target="_blank" class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contenedor del Mapa -->
+        <div class="footer-mapa-container">
+            <iframe class="footer-mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.786244763774!2d-74.0839099240348!3d4.632129942330298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a3b0b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sMedipiel!5e0!3m2!1ses!2sco!4v1620000000000!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2023 Medipiel. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<!-- Modal Detalle Producto -->
+<div id="modal-producto" class="modal-producto">
+    <div class="modal-producto-content">
+        <div class="producto-imagen">
+            <img id="producto-imagen-detalle" src="" alt="Imagen del producto" class="imagen-elegante">
+        </div>
+        <div class="producto-info">
+            <button class="close-modal">&times;</button>
+            <h1 class="producto-titulo" id="producto-titulo-detalle"></h1>
+            <span class="producto-marca" id="producto-marca-detalle"></span>
+            
+            <div class="producto-precio-container">
+                <span class="precio" id="precio-actual"></span>
+                <span class="precio-ml" id="precio-ml-detalle"></span>
+                <p class="descripcion" id="producto-descripcion-detalle"></p>
+            </div>
+            
+            <div class="tamanos-container" id="tamanos-container" style="display: none;">
+                <label>Tamaño</label>
+                <div class="tamanos-options" id="tamanos-options"></div>
+            </div>
+            
+            <div class="cantidad-container">
+                <label>Cantidad:</label>
+                <div class="cantidad-selector">
+                    <button class="cantidad-btn decrementar">-</button>
+                    <input type="number" value="1" min="1" id="cantidad-producto">
+                    <button class="cantidad-btn incrementar">+</button>
+                </div>
+            </div>
+            
+            <button class="btn-agregar-elegante" id="btn-agregar-detalle">
+                <i class="fas fa-shopping-cart"></i> Añadir al carrito
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Chatbot Flotante -->
+<div class="chatbot-float" id="chatbot-float">
+    💬
+</div>
+
+<!-- Modal del Chatbot -->
+<div class="modal-chatbot" id="modal-chatbot">
+    <div class="chatbot-header">
+        <h3>Asistente de Productos</h3>
+        <button class="close-chatbot">&times;</button>
+    </div>
+    <div class="chatbot-body" id="chatbot-body">
+        <!-- Los mensajes del chat aparecerán aquí -->
+    </div>
+    </div>
+
+
+<!-- Modal Carrito -->
+    <div id="modal-carrito" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Tu Carrito de Compras</h3>
+        <div id="items-carrito"></div>
+        <div id="total-carrito" style="font-weight: bold; margin-top: 20px;"></div>
+        <button id="finalizar-compra" class="btn-producto">Finalizar Compra</button>
+    </div>
+</div>
+
+<!-- Modal Pago -->
+<div id="modal-pago" class="modal modal-pago">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        
+            <!-- Barra de progreso mejorada -->
+            <div class="checkout-progress">
+                <div class="progress-step active" id="step-info">
+                    <span></span>
+                    <p>Información</p>
+                </div>
+                <div class="progress-step" id="step-payment-method">
+                    <span></span>
+                    <p>Método de Pago</p>
+                </div>
+                <div class="progress-step" id="step-confirm">
+                    <span></span>
+                    <p>Confirmar Pago</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        
+        <div class="checkout-container">
+            <!-- Columna izquierda - Resumen de productos -->
+            <div class="checkout-products">
+                <h3>Producto(s)</h3>
+                <div id="resumen-compra-detallado"></div>
+                
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal-compra"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Envío</span>
+                        <span>$14.904</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total-compra"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna derecha - Formulario con secciones -->
+            <div class="checkout-form">
+                <form class="form-pago" id="payment-form">
+                    <!-- Sección 1: Información personal -->
+                    <div class="form-section active" id="section-info">
+                        <h4>Información Personal</h4>
+                        
+                        <div class="full-width">
+                            <label>Nombre completo*</label>
+                            <input type="text" id="nombre-completo" required>
+                        </div>
+                        
+                        <div>
+                            <label>Teléfono*</label>
+                            <input type="tel" id="telefono" required>
+                        </div>
+                        
+                        <div>
+                            <label>Correo electrónico*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div>
+                            <label>Confirmar correo*</label>
+                            <input type="email" id="confirm-email" required>
+                        </div>
+                        
+                        <div class="full-width">
+                            <label>Dirección completa*</label>
+                            <input type="text" id="direccion" placeholder="Calle, número, barrio" required>
+                        </div>
+                        
+                        <div>
+                            <label>Ciudad*</label>
+                            <input type="text" id="ciudad" required>
+                        </div>
+                        
+                        <div>
+                            <label>Departamento*</label>
+                            <select id="departamento" required>
+                                <option value="">Seleccionar...</option>
+                                <option>Antioquia</option>
+                                <option>Boyaca</option>
+                                <option>Cesar</option>
+                                <option>Cundinamarca</option>
+                                <option>Santander</option>
+                                <option>Valle del Cauca</option>
+                            </select>
+                        </div>
+                        
+                        <div class="full-width">
+                            <label>Notas adicionales (opcional)</label>
+                            <textarea id="notas" rows="3" placeholder="Instrucciones especiales para la entrega"></textarea>
+                        </div>
+                        
+                        <div class="full-width" style="text-align: right;">
+                            <button type="button" class="btn-next" id="btn-next-info">Siguiente</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección 2: Método de pago -->
+                    <div class="form-section" id="section-payment-method">
+                        <h4>Método de Pago</h4>
+                        
+                        <div class="full-width">
+                            <div class="metodo-pago">
+                                <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" checked>
+                                <img src="img/tarjeta.png" alt="Tarjeta">
+                                <label for="tarjeta">Tarjeta Crédito/Débito</label>
+                            </div>
+                            
+                            <div class="metodo-pago">
+                                <input type="radio" name="metodo-pago" id="nequi" value="nequi">
+                                <img src="img/nequi.png" alt="Nequi">
+                                <label for="nequi">Nequi</label>
+                            </div>
+                            
+                            <div class="metodo-pago">
+                                <input type="radio" name="metodo-pago" id="efecty" value="efecty">
+                                <img src="img/efecty.png" alt="Efecty">
+                                <label for="efecty">Efecty</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Sección de tarjeta -->
+                        <div id="datos-tarjeta" class="full-width">
+                            <h5>Datos de la Tarjeta</h5>
+                            
+                            <div class="full-width">
+                                <label>Nombre en la tarjeta*</label>
+                                <input type="text" id="nombre-tarjeta" required>
+                            </div>
+                            
+                            <div class="full-width">
+                                <label>Número de tarjeta*</label>
+                                <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            
+                            <div>
+                                <label>Fecha de expiración*</label>
+                                <input type="text" id="fecha-expiracion" placeholder="MM/AA" required>
+                            </div>
+                            
+                            <div>
+                                <label>CVV*</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Campos para Nequi -->
+                        <div id="datos-nequi" class="full-width" style="display: none;">
+                            <h5>Datos para pago con Nequi</h5>
+                            <div>
+                                <label>Número de teléfono Nequi*</label>
+                                <input type="tel" id="telefono-nequi" placeholder="3101234567">
+                            </div>
+                            <div>
+                                <label>Nombre del titular*</label>
+                                <input type="text" id="nombre-nequi">
+                            </div>
+                        </div>
+
+                        <!-- Campos para Efecty -->
+                        <div id="datos-efecty" class="full-width" style="display: none;">
+                            <h5>Datos para pago con Efecty</h5>
+                            <div class="full-width">
+                                <label>¿Deseas recibir factura electrónica?</label>
+                                <div style="margin-top: 10px;">
+                                    <input type="radio" name="factura" id="si-factura" value="si">
+                                    <label for="si-factura" style="display: inline; margin-right: 15px;">Sí</label>
+                                    <input type="radio" name="factura" id="no-factura" value="no" checked>
+                                    <label for="no-factura" style="display: inline;">No</label>
+                                </div>
+                            </div>
+                            <div id="campo-correo-factura" style="display: none;">
+                                <label>Correo electrónico para factura*</label>
+                                <input type="email" id="correo-factura">
+                            </div>
+                        </div>
+                        
+                        <div class="full-width" style="display: flex; justify-content: space-between; margin-top: 20px;">
+                            <button type="button" class="btn-prev" id="btn-prev-payment">Anterior</button>
+                            <button type="button" class="btn-next" id="btn-next-payment">Siguiente</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección 3: Confirmación -->
+                    <div class="form-section" id="section-confirm">
+                        <h4>Resumen de tu compra</h4>
+                        
+                        <div id="resumen-info">
+                            <!-- Aquí se mostrará la información ingresada -->
+                        </div>
+                        
+                        <div id="resumen-pago">
+                            <!-- Aquí se mostrará el método de pago seleccionado -->
+                        </div>
+                        
+                        <div class="checkout-summary">
+                            <div class="summary-row total">
+                                <span>Total a pagar</span>
+                                <span id="total-confirm"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Nueva opción de muestra gratis -->
+                        <div class="free-sample-option" style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" id="muestra-gratis"> 
+                                <div>
+                                    <strong>¡Muestras gratis!</strong>
+                                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #666;">Selecciona esta opción para recibir muestras de nuestros nuevos lanzamientos con tu pedido.</p>
+                                </div>
+                            </label>
+                        </div>
+                        <!-- Opción de regalo -->
+                        <div class="gift-option">
+                            <label>
+                                <input type="checkbox" id="es-regalo"> 
+                                Envoltorio de regalo 
+                            </label>
+                            <div class="gift-message" id="gift-message">
+                                <label for="mensaje-regalo">Mensaje para el regalo (opcional)</label>
+                                <textarea id="mensaje-regalo" rows="3" placeholder="Escribe un mensaje especial para incluir con el regalo"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Términos y condiciones -->
+                        <div class="terms-container">
+                            <label>
+                                <input type="checkbox" id="accept-terms" required> 
+                                Acepto los Términos y Condiciones y autorizo el procesamiento de mis datos personales.
+                            </label>
+                        </div>
+                        
+                        <div class="full-width" style="display: flex; justify-content: space-between; margin-top: 20px;">
+                            <button type="button" class="btn-prev" id="btn-prev-confirm">Anterior</button>
+                            <button type="submit" class="btn-producto" id="btn-confirm-purchase">Confirmar Pago</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Configuración inicial
+    document.addEventListener('DOMContentLoaded', () => {
+        initNavbar();
+        initCarrusel();
+        initProductFilters();
+        initCartSystem();
+        initTooltips();
+        initMapHover();
+        initChatbot();
+        initMayoristasSection();
+        initProductDetailModal();
+    });
+    
+    // 1. Efecto de Navbar al hacer scroll
+    function initNavbar() {
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'var(--blanco)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    }
+    
+    // 2. Carrusel de imágenes
+    function initCarrusel() {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carrusel-item');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('carrusel-dots');
+        let carruselInterval;
+    
+        // Crear dots de navegación
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarrusel();
+            });
+            dotsContainer.appendChild(dot);
+        });
+    
+        function updateCarrusel() {
+            const carruselInner = document.getElementById('carrusel-inner');
+            carruselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizar dots activos
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+    
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarrusel();
+        }
+    
+        // Auto-avance del carrusel
+        function startAutoSlide() {
+            carruselInterval = setInterval(() => moveSlide(1), 5000);
+        }
+    
+        // Controladores de eventos
+        document.querySelector('.carrusel-control.prev').addEventListener('click', () => moveSlide(-1));
+        document.querySelector('.carrusel-control.next').addEventListener('click', () => moveSlide(1));
+        
+        const carrusel = document.querySelector('.carrusel');
+        carrusel.addEventListener('mouseenter', () => clearInterval(carruselInterval));
+        carrusel.addEventListener('mouseleave', startAutoSlide);
+    
+        startAutoSlide();
+    }
+    
+    // 3. Filtrado de productos
+    function initProductFilters() {
+    const categorias = document.querySelectorAll('.categoria');
+    const productos = document.querySelectorAll('.producto');
+    const toggleFiltrosBtn = document.getElementById('toggle-filtros');
+    const filtrosContenido = document.getElementById('filtros-contenido');
+
+    // Filtrado por categoría (funcionalidad básica)
+    categorias.forEach(categoria => {
+        categoria.addEventListener('click', () => {
+            categorias.forEach(c => c.classList.remove('active'));
+            categoria.classList.add('active');
+            
+            const categoriaSeleccionada = categoria.dataset.categoria;
+            
+            productos.forEach(producto => {
+                const categoriasProducto = producto.dataset.categorias.split(' ');
+                producto.style.display = (categoriaSeleccionada === 'all' || categoriasProducto.includes(categoriaSeleccionada)) 
+                    ? 'block' 
+                    : 'none';
+            });
+        });
+    });
+
+    // Toggle filtros avanzados
+    toggleFiltrosBtn.addEventListener('click', () => {
+        filtrosContenido.classList.toggle('activo');
+        toggleFiltrosBtn.classList.toggle('activo');
+    });
+
+    // Función de filtrado simplificada y garantizada
+    function aplicarFiltrosProductos() {
+        // Obtener marcas seleccionadas
+        const marcasCheckboxes = document.querySelectorAll('.filtros-contenido input[data-filtro="marca"]:checked');
+        const marcasSeleccionadas = Array.from(marcasCheckboxes).map(cb => cb.value.toLowerCase().trim());
+
+        // Aplicar solo filtro de marcas (versión simplificada)
+        productos.forEach(producto => {
+            const marcaProducto = producto.dataset.marca.toLowerCase().trim();
+            
+            // Si no hay marcas seleccionadas, mostrar todos
+            if (marcasSeleccionadas.length === 0) {
+                producto.style.display = 'block';
+                return;
+            }
+            
+            // Mostrar solo si coincide con alguna marca seleccionada
+            producto.style.display = marcasSeleccionadas.includes(marcaProducto) ? 'block' : 'none';
+        });
+    }
+
+    // Asignar eventos a los checkboxes de marca
+    document.querySelectorAll('.filtros-contenido input[data-filtro="marca"]').forEach(checkbox => {
+        checkbox.addEventListener('change', aplicarFiltrosProductos);
+    });
+}
+    
+    // 4. Sistema de Carrito
+    function initCartSystem() {
+        // Elementos del DOM
+        const cartCountElement = document.querySelector('.carrito-count');
+        const modalCarrito = document.getElementById('modal-carrito');
+        const modalPago = document.getElementById('modal-pago');
+        const itemsCarrito = document.getElementById('items-carrito');
+        const totalCarrito = document.getElementById('total-carrito');
+        const finalizarCompraBtn = document.getElementById('finalizar-compra');
+        const closeButtons = document.querySelectorAll('.modal .close');
+        
+        // Elementos de la barra de progreso
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const progressFill = document.getElementById('progress-fill');
+        const stepInfo = document.getElementById('step-info');
+        const stepPaymentMethod = document.getElementById('step-payment-method');
+        const stepConfirm = document.getElementById('step-confirm');
+        
+        // Secciones del formulario
+        const formSections = document.querySelectorAll('.form-section');
+        const sectionInfo = document.getElementById('section-info');
+        const sectionPaymentMethod = document.getElementById('section-payment-method');
+        const sectionConfirm = document.getElementById('section-confirm');
+        
+        // Botones de navegación
+        const btnNextInfo = document.getElementById('btn-next-info');
+        const btnNextPayment = document.getElementById('btn-next-payment');
+        const btnPrevPayment = document.getElementById('btn-prev-payment');
+        const btnPrevConfirm = document.getElementById('btn-prev-confirm');
+        const btnConfirmPurchase = document.getElementById('btn-confirm-purchase');
+        
+        // Elementos del formulario de pago
+        const formPago = document.getElementById('payment-form');
+        const metodoPagoRadios = document.querySelectorAll('input[name="metodo-pago"]');
+        const datosTarjeta = document.getElementById('datos-tarjeta');
+        const datosNequi = document.getElementById('datos-nequi');
+        const datosEfecty = document.getElementById('datos-efecty');
+        const campoCorreoFactura = document.getElementById('campo-correo-factura');
+        const facturaRadios = document.querySelectorAll('input[name="factura"]');
+    
+        // Opción de regalo
+        const esRegaloCheckbox = document.getElementById('es-regalo');
+        const giftMessage = document.getElementById('gift-message');
+    
+        // Cargar carrito desde localStorage
+        let cartItems = JSON.parse(localStorage.getItem('medipielCart')) || [];
+        let cartCount = cartItems.reduce((total, item) => total + item.cantidad, 0);
+        
+        // Mostrar cantidad inicial
+        updateCartCount(cartCount);
+    
+        // ==============================================
+        // EVENTOS PRINCIPALES
+        // ==============================================
+    
+        // Evento para abrir el modal del carrito
+        document.querySelector('.carrito').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(modalCarrito);
+            updateCartModal();
+        });
+    
+        // Evento para botón de finalizar compra
+        // Evento para botón de finalizar compra
+        if (finalizarCompraBtn) {
+            finalizarCompraBtn.addEventListener('click', function() {
+        // Validar que hay productos en el carrito
+        if (cartItems.length === 0) {
+            alert('Por favor agrega productos al carrito antes de continuar');
+            return;
+        }
+        
+        closeModal(modalCarrito);
+        openModal(modalPago);
+        updatePaymentModal();
+        actualizarSeccionesPago();
+        updateProgressBar(0);
+    });
+    }
+    
+        // Eventos para botones de cerrar modales
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                closeModal(modal);
+            });
+        });
+    
+        // Cerrar modales al hacer clic fuera del contenido
+        document.querySelectorAll('.cantidad-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation(); // Evita que el clic se propague al producto
+                const input = this.parentElement.querySelector('.cantidad-input');
+                let value = parseInt(input.value);
+                
+                if (this.classList.contains('incrementar')) {
+                    value++;
+                } else if (this.classList.contains('decrementar') && value > 1) {
+                    value--;
+                }
+                
+                input.value = value;
+            });
+        });
+    
+        // Evento para opción de regalo
+        esRegaloCheckbox.addEventListener('change', function() {
+            giftMessage.style.display = this.checked ? 'block' : 'none';
+        });
+    
+        // Navegación entre secciones
+        btnNextInfo.addEventListener('click', function() {
+            if (validateInfoSection()) {
+                showSection(sectionPaymentMethod);
+                updateProgressBar(1);
+            }
+        });
+    
+        btnNextPayment.addEventListener('click', function() {
+            if (validatePaymentSection()) {
+                updateResumenConfirmacion();
+                showSection(sectionConfirm);
+                updateProgressBar(2);
+            }
+        });
+    
+        btnPrevPayment.addEventListener('click', function() {
+            showSection(sectionInfo);
+            updateProgressBar(0);
+        });
+    
+        btnPrevConfirm.addEventListener('click', function() {
+            showSection(sectionPaymentMethod);
+            updateProgressBar(1);
+        });
+    
+        // Eventos para métodos de pago
+        metodoPagoRadios.forEach(radio => {
+            radio.addEventListener('change', actualizarSeccionesPago);
+        });
+    
+        // Eventos para facturación
+        facturaRadios.forEach(radio => {
+            radio.addEventListener('change', actualizarFactura);
+        });
+    
+        // Evento para enviar formulario de pago
+        if (formPago) {
+            formPago.addEventListener('submit', procesarFormularioPago);
+        }
+    
+        // Eventos de botones "Añadir al carrito"
+        document.querySelectorAll('.btn-producto').forEach(button => {
+            button.addEventListener('click', function() {
+                const producto = this.closest('.producto');
+                const nombre = producto.querySelector('h3').textContent;
+                const precio = producto.querySelector('.precio').textContent;
+                const imgSrc = producto.querySelector('img').src;
+                const cantidad = parseInt(producto.querySelector('.cantidad-input').value) || 1;
+                
+                addToCart(nombre, precio, imgSrc, cantidad);
+                
+                // Animación de confirmación
+                this.innerHTML = '<i class="fas fa-check"></i> Agregado';
+                setTimeout(() => {
+                    this.innerHTML = 'Añadir al carrito';
+                }, 1500);
+            });
+        });
+    
+        // ==============================================
+        // FUNCIONES PRINCIPALES DEL CARRITO
+        // ==============================================
+    
+        function updateCartCount(count) {
+            if (cartCountElement) {
+                cartCountElement.textContent = count;
+                // Animación
+                cartCountElement.style.transform = 'scale(1.5)';
+                setTimeout(() => cartCountElement.style.transform = 'scale(1)', 300);
+            }
+        }
+    
+        window.addToCart = function(nombre, precio, imgSrc, cantidad = 1) {
+        const existingItem = cartItems.find(item => 
+            item.nombre === nombre && 
+            item.precio === precio && 
+            item.imgSrc === imgSrc
+        );
+
+        if (existingItem) {
+            existingItem.cantidad += cantidad;
+        } else {
+            cartItems.push({ nombre, precio, imgSrc, cantidad });
+        }
+
+        cartCount = cartItems.reduce((total, item) => total + item.cantidad, 0);
+        updateCartCount(cartCount);
+        saveCart();
+        }; 
+
+        function removeFromCart(productName) {
+            cartItems = cartItems.filter(item => item.nombre !== productName);
+            cartCount = cartItems.reduce((total, item) => total + item.cantidad, 0);
+            updateCartCount(cartCount);
+            saveCart();
+            updateCartModal();
+            updatePaymentModal();
+
+            // Cerrar modal de pago si no hay productos
+    if (cartItems.length === 0) {
+        closeModal(document.getElementById('modal-pago'));
+        alert('No hay productos en el carrito. Por favor agrega productos para continuar.');
+    }
+        }
+    
+        function updateCartModal() {
+        const itemsCarrito = document.getElementById('items-carrito');
+        const totalCarrito = document.getElementById('total-carrito');
+        const finalizarCompraBtn = document.getElementById('finalizar-compra');
+        
+        if (!itemsCarrito || !totalCarrito || !finalizarCompraBtn) return;
+        
+        itemsCarrito.innerHTML = '';
+        let total = 0;
+
+            cartItems.forEach(item => {
+                const precioNumerico = parseInt(item.precio.replace(/\D/g, '')) || 0;
+                const subtotal = precioNumerico * item.cantidad;
+                total += subtotal;
+    
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.imgSrc}" alt="${item.nombre}" width="60">
+                    <div class="cart-item-info">
+                        <h4>${item.nombre}</h4>
+                        <p>Cantidad: ${item.cantidad}</p>
+                        <p>${item.precio} c/u = $${subtotal.toLocaleString()}</p>
+                    </div>
+                    <button class="remove-item" data-product="${item.nombre}">✖</button>
+                `;
+                
+                itemsCarrito.appendChild(itemElement);
+            });
+    
+            totalCarrito.textContent = `Total: $${total.toLocaleString()}`;
+            // Actualizar estado del botón
+            finalizarCompraBtn.disabled = cartItems.length === 0;
+            if (cartItems.length === 0) {
+                finalizarCompraBtn.style.opacity = '0.5';
+                finalizarCompraBtn.style.cursor = 'not-allowed';
+            } else {
+                finalizarCompraBtn.style.opacity = '1';
+                finalizarCompraBtn.style.cursor = 'pointer';
+            }
+            // Eventos para botones de eliminar
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    removeFromCart(this.dataset.product);
+                });
+            });
+        }
+    
+        function updatePaymentModal() {
+            const resumenCompra = document.getElementById('resumen-compra-detallado');
+            const totalCompra = document.getElementById('total-compra');
+            const subtotalCompra = document.getElementById('subtotal-compra');
+            
+            if (!resumenCompra || !totalCompra || !subtotalCompra) return;
+            
+            resumenCompra.innerHTML = '';
+            let subtotal = 0;
+
+            // Mostrar mensaje si no hay productos
+            if (cartItems.length === 0) {
+                resumenCompra.innerHTML = `
+                    <div class="empty-cart-message">
+                        <p>No hay productos en tu carrito</p>
+                        <button class="btn-producto" onclick="closeModal(document.getElementById('modal-pago'))">
+                            Volver a la tienda
+                        </button>
+                    </div>
+                `;
+                subtotalCompra.textContent = '$0';
+                totalCompra.textContent = '$0';
+                document.getElementById('total-confirm').textContent = '$0';
+                return;
+            }
+    
+            cartItems.forEach(item => {
+                const precioNumerico = parseInt(item.precio.replace(/\D/g, '')) || 0;
+                const itemSubtotal = precioNumerico * item.cantidad;
+                subtotal += itemSubtotal;
+    
+                const itemElement = document.createElement('div');
+                itemElement.className = 'resumen-item';
+                itemElement.innerHTML = `
+                    <div class="resumen-item-imagen">
+                        <img src="${item.imgSrc}" alt="${item.nombre}" width="60">
+                    </div>
+                    <div class="resumen-item-info">
+                        <h4>${item.nombre}</h4>
+                        <p>${item.precio} c/u</p>
+                        <div class="resumen-item-quantity">
+                            <button class="cantidad-btn minus" data-product="${item.nombre}">-</button>
+                            <input type="text" class="cantidad-input" value="${item.cantidad}" readonly>
+                            <button class="cantidad-btn plus" data-product="${item.nombre}">+</button>
+                        </div>
+                    </div>
+                    <div class="resumen-item-price">
+                        $${itemSubtotal.toLocaleString()}
+                    </div>
+                `;
+                
+                // Agregar eventos a los botones de cantidad
+                const minusBtn = itemElement.querySelector('.minus');
+                const plusBtn = itemElement.querySelector('.plus');
+                
+                minusBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateCartItemQuantity(item.nombre, -1);
+                });
+                
+                plusBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateCartItemQuantity(item.nombre, 1);
+                });
+                
+                resumenCompra.appendChild(itemElement);
+            });
+    
+            // Calcular total con envío
+            const envio = 14904;
+            const total = subtotal + envio;
+            
+            subtotalCompra.textContent = `$${subtotal.toLocaleString()}`;
+            totalCompra.textContent = `$${total.toLocaleString()}`;
+            document.getElementById('total-confirm').textContent = `$${total.toLocaleString()}`;
+        }
+    
+        function updateCartItemQuantity(productName, change) {
+            const item = cartItems.find(item => item.nombre === productName);
+            if (item) {
+                item.cantidad += change;
+                
+                if (item.cantidad < 1) {
+                    removeFromCart(productName);
+                } else {
+                    saveCart();
+                    updatePaymentModal();
+                    updateCartModal();
+                }
+            }
+        }
+    
+        // ==============================================
+        // FUNCIONES DE PAGO
+        // ==============================================
+    
+        function actualizarSeccionesPago() {
+            const metodoSeleccionado = document.querySelector('input[name="metodo-pago"]:checked').value;
+            
+            // Ocultar todas las secciones primero
+            datosTarjeta.style.display = 'none';
+            datosNequi.style.display = 'none';
+            datosEfecty.style.display = 'none';
+            
+            // Mostrar solo la sección correspondiente
+            switch(metodoSeleccionado) {
+                case 'tarjeta':
+                    datosTarjeta.style.display = 'block';
+                    break;
+                case 'nequi':
+                    datosNequi.style.display = 'block';
+                    break;
+                case 'efecty':
+                    datosEfecty.style.display = 'block';
+                    break;
+            }
+            
+            actualizarCamposRequeridos();
+        }
+    
+        function actualizarFactura() {
+            const quiereFactura = document.querySelector('input[name="factura"]:checked').value === 'si';
+            campoCorreoFactura.style.display = quiereFactura ? 'block' : 'none';
+            actualizarCamposRequeridos();
+        }
+    
+        function actualizarCamposRequeridos() {
+            const metodoSeleccionado = document.querySelector('input[name="metodo-pago"]:checked').value;
+            const quiereFactura = document.querySelector('input[name="factura"]:checked').value === 'si';
+            
+            // Resetear todos los requeridos primero
+            document.querySelectorAll('#datos-tarjeta input, #datos-nequi input, #campo-correo-factura input').forEach(input => {
+                input.required = false;
+            });
+            
+            // Configurar requeridos según método de pago
+            if (metodoSeleccionado === 'tarjeta') {
+                document.querySelectorAll('#datos-tarjeta input').forEach(input => {
+                    input.required = true;
+                });
+            } else if (metodoSeleccionado === 'nequi') {
+                document.querySelectorAll('#datos-nequi input').forEach(input => {
+                    input.required = true;
+                });
+            } else if (metodoSeleccionado === 'efecty' && quiereFactura) {
+                document.querySelector('#campo-correo-factura input').required = true;
+            }
+        }
+    
+        function validateInfoSection() {
+            const nombre = document.getElementById('nombre-completo').value;
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
+            const confirmEmail = document.getElementById('confirm-email').value;
+            const direccion = document.getElementById('direccion').value;
+            const ciudad = document.getElementById('ciudad').value;
+            const departamento = document.getElementById('departamento').value;
+            
+            if (!nombre || !telefono || !email || !confirmEmail || !direccion || !ciudad || !departamento) {
+                alert('Por favor completa todos los campos obligatorios');
+                return false;
+            }
+            
+            if (email !== confirmEmail) {
+                alert('Los correos electrónicos no coinciden');
+                return false;
+            }
+            
+            return true;
+        }
+    
+        function validatePaymentSection() {
+            const metodoPago = document.querySelector('input[name="metodo-pago"]:checked').value;
+            
+            if (metodoPago === 'tarjeta') {
+                const nombreTarjeta = document.getElementById('nombre-tarjeta').value;
+                const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+                const fechaExpiracion = document.getElementById('fecha-expiracion').value;
+                const cvv = document.getElementById('cvv').value;
+                
+                if (!nombreTarjeta || !numeroTarjeta || !fechaExpiracion || !cvv) {
+                    alert('Por favor completa todos los datos de la tarjeta');
+                    return false;
+                }
+                
+                if (numeroTarjeta.replace(/\D/g, '').length < 16) {
+                    alert('El número de tarjeta debe tener 16 dígitos');
+                    return false;
+                }
+            } else if (metodoPago === 'nequi') {
+                const telefono = document.getElementById('telefono-nequi').value;
+                const nombre = document.getElementById('nombre-nequi').value;
+                
+                if (!telefono || !nombre) {
+                    alert('Por favor completa todos los datos de Nequi');
+                    return false;
+                }
+                
+                if (telefono.replace(/\D/g, '').length < 10) {
+                    alert('El número de teléfono debe tener al menos 10 dígitos');
+                    return false;
+                }
+            } else if (metodoPago === 'efecty') {
+                const factura = document.querySelector('input[name="factura"]:checked').value;
+                
+                if (factura === 'si' && !document.getElementById('correo-factura').value) {
+                    alert('Por favor ingresa el correo para la factura');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+    
+        function updateResumenConfirmacion() {
+            const resumenInfo = document.getElementById('resumen-info');
+            const resumenPago = document.getElementById('resumen-pago');
+            
+            // Información personal
+            const nombre = document.getElementById('nombre-completo').value;
+            const direccion = document.getElementById('direccion').value;
+            const ciudad = document.getElementById('ciudad').value;
+            const departamento = document.getElementById('departamento').value;
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
+            
+            resumenInfo.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <h5>Información de Entrega</h5>
+                    <p><strong>Nombre:</strong> ${nombre}</p>
+                    <p><strong>Dirección:</strong> ${direccion}, ${ciudad}, ${departamento}</p>
+                    <p><strong>Teléfono:</strong> ${telefono}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                </div>
+            `;
+            
+            // Método de pago
+            const metodoPago = document.querySelector('input[name="metodo-pago"]:checked').value;
+            let detallesPago = '';
+            
+            if (metodoPago === 'tarjeta') {
+                const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+                const ultimos4 = numeroTarjeta.slice(-4);
+                detallesPago = `
+                    <p><strong>Método:</strong> Tarjeta de crédito/débito</p>
+                    <p><strong>Número:</strong> **** **** **** ${ultimos4}</p>
+                `;
+            } else if (metodoPago === 'nequi') {
+                const telefono = document.getElementById('telefono-nequi').value;
+                detallesPago = `
+                    <p><strong>Método:</strong> Nequi</p>
+                    <p><strong>Teléfono:</strong> ${telefono}</p>
+                `;
+            } else if (metodoPago === 'efecty') {
+                detallesPago = `<p><strong>Método:</strong> Efecty</p>`;
+                const factura = document.querySelector('input[name="factura"]:checked').value;
+                if (factura === 'si') {
+                    const correo = document.getElementById('correo-factura').value;
+                    detallesPago += `<p><strong>Factura a:</strong> ${correo}</p>`;
+                }
+            }
+            
+            resumenPago.innerHTML = `
+                <div style="margin-bottom: 15px;">
+                    <h5>Información de Pago</h5>
+                    ${detallesPago}
+                </div>
+            `;
+        }
+    
+        function procesarFormularioPago(e) {
+            e.preventDefault();
+             // Validación reforzada
+    if (cartItems.length === 0) {
+        alert('No hay productos en el carrito. El proceso de compra se cancelará.');
+        closeModal(document.getElementById('modal-pago'));
+        return;
+    }
+            if (!document.getElementById('accept-terms').checked) {
+                alert('Debes aceptar los términos y condiciones para continuar');
+                return;
+            }
+            
+            const metodoPago = document.querySelector('input[name="metodo-pago"]:checked').value;
+            const esRegalo = document.getElementById('es-regalo').checked;
+            const mensajeRegalo = esRegalo ? document.getElementById('mensaje-regalo').value : '';
+            
+            // Procesar el pago
+            procesarPago(metodoPago, esRegalo, mensajeRegalo);
+        }
+    
+        function procesarPago(metodoPago, esRegalo, mensajeRegalo) {
+            let mensaje = '¡Pago procesado con éxito!\nMétodo: ';
+            let detalles = '';
+            
+            switch(metodoPago) {
+                case 'tarjeta':
+                    const nombreTarjeta = document.getElementById('nombre-tarjeta').value;
+                    mensaje += 'Tarjeta de crédito/débito';
+                    detalles = `Titular: ${nombreTarjeta}`;
+                    break;
+                case 'nequi':
+                    const telefono = document.getElementById('telefono-nequi').value;
+                    mensaje += 'Nequi';
+                    detalles = `Teléfono: ${telefono}`;
+                    break;
+                case 'efecty':
+                    mensaje += 'Efecty';
+                    const factura = document.querySelector('input[name="factura"]:checked').value;
+                    if (factura === 'si') {
+                        const correo = document.getElementById('correo-factura').value;
+                        detalles = `Factura enviada a: ${correo}`;
+                    }
+                    break;
+            }
+            
+            if (esRegalo) {
+                detalles += `\n\nEsta compra es un regalo`;
+                if (mensajeRegalo) {
+                    detalles += `\nMensaje: "${mensajeRegalo}"`;
+                }
+            }
+            
+            alert(`${mensaje}\n${detalles}\n\nTotal: ${document.getElementById('total-confirm').textContent}`);
+            
+            // Limpiar carrito y cerrar modales
+            localStorage.removeItem('medipielCart');
+            cartItems = [];
+            cartCount = 0;
+            updateCartCount(cartCount);
+            closeModal(modalPago);
+            
+            // Redirigir a página de agradecimiento (opcional)
+            // setTimeout(() => { window.location.href = 'gracias.html'; }, 1000);
+        }
+    
+        // ==============================================
+        // FUNCIONES DE NAVEGACIÓN Y PROGRESO
+        // ==============================================
+    
+        function showSection(sectionToShow) {
+            formSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            sectionToShow.classList.add('active');
+        }
+    
+        function updateProgressBar(step) {
+            // Actualizar pasos
+            progressSteps.forEach((stepElement, index) => {
+                // Resetear clases primero
+                stepElement.classList.remove('active', 'completed');
+                
+                // Aplicar clases según el estado
+                if (index < step) {
+                    stepElement.classList.add('completed');
+                } else if (index === step) {
+                    // Pequeño retraso para la animación del paso activo
+                    setTimeout(() => {
+                        stepElement.classList.add('active');
+                    }, 150);
+                }
+            });
+            
+            // Actualizar barra de progreso con animación suave
+            const progressPercentage = (step / (progressSteps.length - 1)) * 100;
+            
+            // Usar requestAnimationFrame para animación fluida
+            let start = null;
+            const duration = 500;
+            const initialWidth = parseFloat(progressFill.style.width) || 0;
+            const targetWidth = progressPercentage;
+            
+            function animate(timestamp) {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const currentWidth = initialWidth + (targetWidth - initialWidth) * progress;
+                progressFill.style.width = `${currentWidth}%`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+    
+        // ==============================================
+        // FUNCIONES AUXILIARES
+        // ==============================================
+    
+        function saveCart() {
+            localStorage.setItem('medipielCart', JSON.stringify(cartItems));
+        }
+    
+        function openModal(modal) {
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    
+        function closeModal(modal) {
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    
+        // Inicializar secciones de pago al cargar
+        actualizarSeccionesPago();
+        actualizarFactura();
+    }
+    
+    // 5. Tooltips
+    function initTooltips() {
+        document.querySelectorAll('.tooltip').forEach(tooltip => {
+            const tooltiptext = tooltip.querySelector('.tooltiptext');
+            
+            tooltip.addEventListener('mouseenter', () => {
+                tooltiptext.style.visibility = 'visible';
+                tooltiptext.style.opacity = '1';
+            });
+            
+            tooltip.addEventListener('mouseleave', () => {
+                tooltiptext.style.visibility = 'hidden';
+                tooltiptext.style.opacity = '0';
+            });
+        });
+    }
+    
+    // 6. Efecto hover para el mapa
+    function initMapHover() {
+        const mapa = document.querySelector('.footer-mapa');
+        
+        document.querySelector('.footer-mapa-container').addEventListener('mouseenter', () => {
+            mapa.style.transform = 'scale(1.03)';
+            mapa.style.transition = 'transform 0.3s ease';
+        });
+    
+        document.querySelector('.footer-mapa-container').addEventListener('mouseleave', () => {
+            mapa.style.transform = 'scale(1)';
+        });
+    }
+    
+    // 7. Chat bot
+    function initChatbot() {
+        const chatbotFloat = document.getElementById('chatbot-float');
+        const modalChatbot = document.getElementById('modal-chatbot');
+        const chatbotBody = document.getElementById('chatbot-body');
+        const closeChatbot = document.querySelector('.close-chatbot');
+    
+        // Base de datos de productos
+        const productos = {
+            hidratacion: [
+                {
+                    nombre: "Hidratante Facial Anti-brillo Effaclar Matificante",
+                    descripcion: "Controla el brillo y mantiene la hidratación para pieles grasas",
+                    precio: "$162.000",
+                    imagen: "img/Hidra1.png",
+                    tipoPiel: ["grasa", "mixta"]
+                },
+            ],
+            proteccion: [
+                {
+                    nombre: "Fotoprotector Fusion Water Magic Oil Control",
+                    descripcion: "Fotoprotector facial diario SPF 50, ultraligero, no graso, con ácido hialurónico, vitamina E y alga antioxidante. Hidrata y protege intensamente.",
+                    precio: "$138.000",
+                    imagen: "img/procter1.png",
+                    tipoPiel: ["sensible", "mixta"]
+                },
+                
+            ],
+            reparacion: [
+                {
+                    nombre: "HA Intensifier Multi-Glycan - Skinceuticals 30 ml",
+                    descripcion: "Rellena la piel, mejora la luminosidad y redefine el contorno facial.",
+                    precio: "$531.000",
+                    imagen: "img/serum1.png",
+                    tipoPiel: ["seca", "sensible"]
+                },
+                
+            ],
+            limpieza: [
+                {
+                    nombre: "Sensibio H2O Agua Micelar - Bioderma 500 ml",
+                    descripcion: "Agua micelar limpiadora Bioderma que cuida tu piel sensible.",
+                    precio: "$167.000",
+                    imagen: "img/aguamic1.png",
+                    tipoPiel: ["sensible"]
+                },
+                
+            ],
+            limpieza: [
+                {
+                    nombre: "Gel Limpiador Espumoso - CeraVe 473 ml",
+                    descripcion: "Elimina el exceso de grasa, suciedad y maquillaje",
+                    precio: "$106.000",
+                    imagen: "img/limpi1.png",
+                    tipoPiel: ["piel"]
+                },
+                // ... otros productos (mantener la misma estructura)
+            ],
+            // ... otras categorías
+        };
+    
+        // Estados del chatbot
+        let currentStep = 0;
+        const steps = [
+            {
+                pregunta: "¿Qué tipo de producto necesitas hoy?",
+                opciones: [
+                    { texto: "Hidratación", value: "hidratacion" },
+                    { texto: "Protección solar", value: "proteccion" },
+                    { texto: "Reparación/Tratamiento", value: "reparacion" },
+                    { texto: "Limpieza", value: "limpieza" }
+                ]
+            },
+            {
+                pregunta: "¿Qué tipo de piel tienes?",
+                opciones: [
+                    { texto: "Seca", value: "seca" },
+                    { texto: "Grasa", value: "grasa" },
+                    { texto: "Mixta", value: "mixta" },
+                    { texto: "Sensible", value: "sensible" },
+                    { texto: "Todo tipo de piel", value: "piel" }
+                ]
+            }
+        ];
+    
+        let selecciones = {
+            tipoProducto: "",
+            tipoPiel: ""
+        };
+    
+        // Event listeners
+        chatbotFloat.addEventListener('click', toggleChatbot);
+        closeChatbot.addEventListener('click', toggleChatbot);
+    
+        function toggleChatbot() {
+            const isOpen = modalChatbot.style.display === 'flex';
+            
+            if (isOpen) {
+                modalChatbot.classList.remove('active');
+                setTimeout(() => {
+                    modalChatbot.style.display = 'none';
+                }, 300);
+            } else {
+                modalChatbot.style.display = 'flex';
+                setTimeout(() => {
+                    modalChatbot.classList.add('active');
+                }, 10);
+                resetChatbot();
+                mostrarSaludoInicial();
+            }
+        }
+    
+        function resetChatbot() {
+            chatbotBody.innerHTML = '';
+            currentStep = 0;
+            selecciones = {
+                tipoProducto: "",
+                tipoPiel: ""
+            };
+        }
+    
+        function mostrarSaludoInicial() {
+            addMessage('¡Hola! 😊 Es un gusto ayudarte hoy.', 'bot-message');
+            
+            setTimeout(() => {
+                mostrarPasoActual();
+            }, 500);
+        }
+    
+        function mostrarPasoActual() {
+            if (currentStep >= steps.length) {
+                mostrarRecomendaciones();
+                return;
+            }
+    
+            const paso = steps[currentStep];
+            addMessage(paso.pregunta, 'bot-message');
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chatbot-options';
+            
+            paso.opciones.forEach(opcion => {
+                const button = document.createElement('button');
+                button.className = 'chatbot-option';
+                button.textContent = opcion.texto;
+                button.addEventListener('click', () => {
+                    if (currentStep === 0) {
+                        selecciones.tipoProducto = opcion.value;
+                    } else if (currentStep === 1) {
+                        selecciones.tipoPiel = opcion.value;
+                    }
+                    currentStep++;
+                    mostrarPasoActual();
+                });
+                optionsDiv.appendChild(button);
+            });
+            
+            chatbotBody.appendChild(optionsDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+    
+        function mostrarRecomendaciones() {
+            const productosFiltrados = (productos[selecciones.tipoProducto] || []).filter(
+            producto => producto.tipoPiel && producto.tipoPiel.includes(selecciones.tipoPiel.toLowerCase())
+        );
+
+        if (productosFiltrados.length === 0) {
+            addMessage('No encontramos productos que coincidan con tus necesidades. Prueba con otra combinación.', 'bot-message');
+            
+            // Debug para ayudarte a identificar el problema
+            console.log("Categoría seleccionada:", selecciones.tipoProducto);
+            console.log("Tipos de piel disponibles:", selecciones.tipoPiel);
+            console.log("Productos en categoría:", productos[selecciones.tipoProducto]);
+        } else {
+            addMessage('Basado en tus selecciones, te recomendamos estos productos:', 'bot-message');
+            
+            // Limpiar recomendaciones anteriores
+            const recomendacionesAnteriores = chatbotBody.querySelectorAll('.producto-recomendado');
+            recomendacionesAnteriores.forEach(el => el.remove());
+            
+            productosFiltrados.forEach(producto => {
+                const productoDiv = document.createElement('div');
+                productoDiv.className = 'producto-recomendado';
+                productoDiv.innerHTML = `
+                    <div class="producto-recomendado-imagen">
+                        <img src="${producto.imagen}" alt="${producto.nombre}" width="100">
+                    </div>
+                    <div class="producto-recomendado-info">
+                        <h4>${producto.nombre}</h4>
+                        <p>${producto.descripcion}</p>
+                        <p class="precio-recomendado">${producto.precio}</p>
+                    </div>
+                `;
+                chatbotBody.appendChild(productoDiv);
+            });
+        }
+
+        preguntarSiNecesitaAlgoMas();
+                }
+    
+        function preguntarSiNecesitaAlgoMas() {
+            addMessage('¿Necesitas algo más hoy?', 'bot-message');
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chatbot-options';
+            
+            // Botón para buscar más productos
+            const siButton = document.createElement('button');
+            siButton.className = 'chatbot-option';
+            siButton.textContent = 'Sí, buscar otro producto';
+            siButton.addEventListener('click', () => {
+                resetChatbot();
+                mostrarSaludoInicial();
+            });
+            
+            // Botón para finalizar
+            const noButton = document.createElement('button');
+            noButton.className = 'chatbot-option';
+            noButton.textContent = 'No, gracias';
+            noButton.addEventListener('click', mostrarMensajeDespedida);
+            
+            optionsDiv.appendChild(siButton);
+            optionsDiv.appendChild(noButton);
+            chatbotBody.appendChild(optionsDiv);
+            
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+    
+        function mostrarMensajeDespedida() {
+            chatbotBody.innerHTML = '';
+            addMessage('¡Gracias por confiar en Medipiel!💙,Esperamos que nuestros productos te ayuden a conseguir los resultados que deseas.', 'bot-message');
+            addMessage('No dudes en volver si necesitas más recomendaciones. ¡Que tengas un excelente día! 😊', 'bot-message');
+            
+            const cerrarButton = document.createElement('button');
+            cerrarButton.className = 'chatbot-option';
+            cerrarButton.textContent = 'Cerrar chat';
+            cerrarButton.addEventListener('click', () => {
+                modalChatbot.style.display = 'none';
+            });
+            
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chatbot-options';
+            optionsDiv.appendChild(cerrarButton);
+            chatbotBody.appendChild(optionsDiv);
+            
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+    
+        function addMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add(type);
+            messageDiv.textContent = text;
+            chatbotBody.appendChild(messageDiv);
+        }
+    }
+    
+    // 8. Sección de Mayoristas
+    function initMayoristasSection() {
+        const btnMayoristas = document.getElementById('btn-mayoristas');
+        const productosSection = document.querySelector('.productos');
+        const mayoristasSection = document.getElementById('mayoristas-section');
+        let mayoristasActivo = false;
+    
+        btnMayoristas.addEventListener('click', function(e) {
+            e.preventDefault();
+            mayoristasActivo = !mayoristasActivo;
+            
+            if (mayoristasActivo) {
+                productosSection.style.display = 'none';
+                mayoristasSection.style.display = 'block';
+                this.textContent = 'Volver a Productos';
+                mayoristasSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                productosSection.style.display = 'block';
+                mayoristasSection.style.display = 'none';
+                this.textContent = 'Mayoristas';
+                productosSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    
+        // Filtros para mayoristas
+        const toggleFiltrosMayoristas = document.getElementById('toggle-filtros-mayoristas');
+        const filtrosContenidoMayoristas = document.getElementById('filtros-contenido-mayoristas');
+        
+        toggleFiltrosMayoristas.addEventListener('click', () => {
+            filtrosContenidoMayoristas.classList.toggle('activo');
+            toggleFiltrosMayoristas.classList.toggle('activo');
+        });
+    
+        // Selectores de cantidad
+        document.querySelectorAll('.selector-cantidad').forEach(selector => {
+            selector.addEventListener('change', function() {
+                const precio = this.options[this.selectedIndex].dataset.precio;
+                const producto = this.closest('.promocion');
+                
+                producto.querySelector('.precio-mayorista').textContent = `$${parseInt(precio).toLocaleString()}`;
+                producto.dataset.precio = precio;
+                
+                updateNivelesPromo(this.value, producto);
+            });
+        });
+    
+        function updateNivelesPromo(opcionSeleccionada, producto) {
+            const niveles = producto.querySelectorAll('.nivel-promo');
+            niveles.forEach(nivel => nivel.classList.remove('active'));
+            
+            if (opcionSeleccionada.includes('+')) {
+                const min = parseInt(opcionSeleccionada.replace('+', ''));
+                const nivelActivo = [...niveles].find(nivel => 
+                    parseInt(nivel.dataset.min) === min && !nivel.dataset.max
+                );
+                if (nivelActivo) nivelActivo.classList.add('active');
+            } else {
+                const [min, max] = opcionSeleccionada.split('-').map(Number);
+                const nivelActivo = [...niveles].find(nivel => 
+                    parseInt(nivel.dataset.min) === min && 
+                    parseInt(nivel.dataset.max) === max
+                );
+                if (nivelActivo) nivelActivo.classList.add('active');
+            }
+        }
+    
+        // Filtrado para mayoristas
+        const filtrosMayoristas = document.querySelectorAll('#filtros-contenido-mayoristas input');
+        filtrosMayoristas.forEach(filtro => {
+            filtro.addEventListener('change', aplicarFiltrosMayoristas);
+        });
+    
+        function aplicarFiltrosMayoristas() {
+            const filtros = {
+                marcas: getCheckedValues('marca'),
+                tipos: getCheckedValues('tipo'),
+                especiales: getCheckedValues('especial'),
+                precioMin: parseInt(document.getElementById('precio-min-mayoristas').value) || 0,
+                precioMax: parseInt(document.getElementById('precio-max-mayoristas').value) || 1000000,
+                volumenMin: parseInt(document.querySelector('#filtros-contenido-mayoristas input[name="volumen"]:checked').value) || 10
+            };
+    
+            document.querySelectorAll('.promocion').forEach(promocion => {
+                const cumpleFiltros = (
+                    (filtros.marcas.length === 0 || filtros.marcas.includes(promocion.dataset.marca)) &&
+                    (filtros.tipos.length === 0 || promocion.dataset.tipo.split(',').some(t => filtros.tipos.includes(t))) &&
+                    (filtros.especiales.length === 0 || (promocion.dataset.especial && 
+                    filtros.especiales.some(e => promocion.dataset.especial.includes(e)))) &&
+                    (parseInt(promocion.dataset.precio) >= filtros.precioMin) &&
+                    (parseInt(promocion.dataset.precio) <= filtros.precioMax) &&
+                    promocion.dataset.volumen.split(',').includes(filtros.volumenMin.toString())
+                );
+    
+                promocion.style.display = cumpleFiltros ? 'block' : 'none';
+            });
+        }
+    
+        function getCheckedValues(filterType) {
+            return Array.from(document.querySelectorAll(`#filtros-contenido-mayoristas input[data-filtro="${filterType}"]:checked`))
+                .map(el => el.value);
+        }
+    }
+    
+
+    // 9. Detalle del producto - Versión unificada
+    function initProductDetailModal() {
+    const modal = document.getElementById('modal-producto');
+    
+    // Evento para abrir modal
+    document.querySelectorAll('.producto').forEach(producto => {
+        producto.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('btn-producto') && 
+                !e.target.classList.contains('cantidad-btn') && 
+                e.target.tagName !== 'INPUT') {
+                openProductDetail(this);
+            }
+        });
+    });
+
+    // Cerrar modal
+    document.querySelector('.close-modal').addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+
+    function openProductDetail(producto) {
+        // Obtener datos del producto
+        const nombre = producto.querySelector('h3').textContent;
+        const precio = producto.querySelector('.precio').textContent;
+        const imgSrc = producto.querySelector('img').src;
+        
+        // Obtener descripción (de data-attribute o elemento oculto)
+        const descripcion = producto.dataset.descripcion || 
+        producto.querySelector('.descripcion-text')?.textContent || 
+        'Descripción no disponible';
+        
+        // Configurar datos del modal
+        document.getElementById('producto-imagen-detalle').src = imgSrc;
+        document.getElementById('producto-titulo-detalle').textContent = nombre;
+        document.getElementById('precio-actual').textContent = precio;
+        document.getElementById('producto-descripcion-detalle').textContent = descripcion;
+        
+        // Configurar botones de cantidad
+        const cantidadInput = document.getElementById('cantidad-producto');
+        const decrementarBtn = document.querySelector('.producto-info .decrementar');
+        const incrementarBtn = document.querySelector('.producto-info .incrementar');
+        
+        // Limpiar eventos anteriores
+        const newDecrementar = decrementarBtn.cloneNode(true);
+        const newIncrementar = incrementarBtn.cloneNode(true);
+        decrementarBtn.replaceWith(newDecrementar);
+        incrementarBtn.replaceWith(newIncrementar);
+        
+        // Configurar eventos
+        newDecrementar.addEventListener('click', () => {
+            let value = parseInt(cantidadInput.value);
+            if (value > 1) {
+                cantidadInput.value = value - 1;
+            }
+        });
+        
+        newIncrementar.addEventListener('click', () => {
+            let value = parseInt(cantidadInput.value);
+            cantidadInput.value = value + 1;
+        });
+        
+        // Validar input
+        cantidadInput.addEventListener('change', () => {
+            let value = parseInt(cantidadInput.value);
+            if (isNaN(value)) {
+                cantidadInput.value = 1;
+            } else if (value < 1) {
+                cantidadInput.value = 1;
+            }
+        });
+        
+        // Configurar botón agregar
+        const agregarBtn = document.getElementById('btn-agregar-detalle');
+        agregarBtn.onclick = function() {
+            const cantidad = parseInt(cantidadInput.value) || 1;
+            
+            // Usar la función addToCart
+            addToCart(nombre, precio, imgSrc, cantidad);
+            
+            // Animación de confirmación
+            this.innerHTML = '<i class="fas fa-check"></i> Agregado';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar a la bolsa';
+                modal.style.display = 'none';
+            }, 1500);
+        };
+        
+        modal.style.display = 'flex';
+    }
+}
+    
+    
+    </script>
+</body>
+</html>
